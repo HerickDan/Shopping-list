@@ -7,23 +7,23 @@ const resultado = document.getElementById('resultado');
 form.addEventListener('submit',function(e){
     e.preventDefault()
     function adicionarItem(){
-        // teste de quantidade
+        //Quantidade dos items adidiconados
         const quantidadeElemento = document.getElementById('quantidade');
-
         let verifica = Number(quantidadeElemento.value);
-        if(verifica>1){
-            console.log('tomates')
-            quantidadeElemento.value=''
-        }else{
-            console.log('tomate')
-            quantidadeElemento.value=''
-        }
+      
         
         //Criação do parágrafo e sua classe
         let p = document.createElement("p")
+        p.textContent=`${quantidadeElemento.value}  `
         p.textContent+=item.value
         p.className='item_sacola'
-      
+        
+        if (verifica > 1) {
+            quantidadeElemento.value=''
+            p.textContent += 's';
+        }else{
+            quantidadeElemento.value=''
+        }
         //Criação do Botão e sua função
         const button = document.createElement('button')
         button.className='Botao_enviar'
@@ -31,9 +31,12 @@ form.addEventListener('submit',function(e){
         button.onclick = function(){
             resultado.removeChild(p)
         }
-
+        
+        
         p.appendChild(button)
         resultado.appendChild(p)       
+     
+      
     }
     adicionarItem()
     item.value=''
