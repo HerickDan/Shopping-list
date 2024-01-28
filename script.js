@@ -26,7 +26,7 @@ form.addEventListener('submit',function(e){
         }
         //Criação do Botão e sua função
         const button = document.createElement('button')
-        button.className='Botao_enviar'
+        button.className='Botao_apagar'
         button.textContent = 'Apagar'
         button.onclick = function(){
             resultado.removeChild(p)
