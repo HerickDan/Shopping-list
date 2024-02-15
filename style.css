@@ -48,6 +48,7 @@ input {
   border: none;
   border-radius: 10px;
   margin-bottom: 10px;
+  box-sizing: border-box;
   width: 100%;
   height: 6vh;
   padding: 1% 2%;
@@ -101,110 +102,107 @@ input {
   border-radius: 10px;
 }
 
-
 @media (max-width: 1080px) {
-    * {
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-        background-image: url("market.jpg");
-        background-image: 100%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        font-size: 20px;
-      }
-      
-      .cabecalho {
-        width: 100%;
-        background-color: #3a7c2d;
-        color: #fff9ff;
-        display: flex;
-        height: 10vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .corpo-sacola {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-      #formulario {
-        display: flex;
-        flex-direction: column;
-        background-color: #6ed84e;
-        border-radius: 20px;
-        width: 60%;
-        height: 20vh;
-        margin-top: 2%;
-        padding: 2%;
-      }
-      .input {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-      }
-      input {
-        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-        border: none;
-        border-radius: 10px;
-        margin-bottom: 10px;
-        width: 100%;
-        box-sizing: border-box;
-        height: 5vh;
-        padding: 1% 2%;
-        font-size: 18px;
-      }
-      .form-item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-      }
-      .Botao_apagar {
-        margin-bottom: 5px;
-        margin-left: 30%;
-        max-width: 30%;
-        max-height: 8%;
-      }
-      .botao-dicionar {
-        width: 10vw;
-        margin-top: 2%;
-        padding: 1%;
-        font-size: 20px;
-        background-color: #4c2ffb;
-        color: white;
-        border: none;
-        border-radius: 10px;
-      }
-      .resultado {
-        width: 100%;
-        vertical-align: baseline;
-        justify-content: space-between;
-      }
-      .item_sacola {
-        margin-top: 2%;
-        margin-left: -2.5%;
-        width: 60vw;
-        display: flex;
-        background-color: rgba(255, 255, 255, 0.854);
-        border-radius: 20px;
-        justify-content: space-between;
-        padding: 3%;
-      }
-      .apagar-botao {
-        width: 7vw;
-      
-        padding: 1%;
-        font-size: 18px;
-        background-color: #4c2ffb;
-        color: white;
-        border: none;
-        border-radius: 10px;
-      }
-      
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+     background-color: #f8d28b;
+    font-size: 20px;
+  }
+
+  .cabecalho {
+    width: 100%;
+    font-size: 15px;
+    background-color: #3a7c2d;
+    color: #fff9ff;
+    display: flex;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .corpo-sacola {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #formulario {
+    display: flex;
+    flex-direction: column;
+    background-color: #6ed84e;
+    border-radius: 20px;
+    width: 60%;
+    height: 22vh;
+    margin-top: 2%;
+    padding: 2%;
+  }
+  .input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  input {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 5vh;
+    padding: 1% 2%;
+    font-size: 18px;
+  }
+  .form-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .Botao_apagar {
+    margin-bottom: 5px;
+    margin-left: 30%;
+    max-width: 30%;
+    max-height: 8%;
+  }
+  .botao-dicionar {
+    width: 10vw;
+    margin-top: 2%;
+    padding: 1%;
+    font-size: 20px;
+    background-color: #4c2ffb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+  }
+  .resultado {
+    width: 100%;
+    vertical-align: baseline;
+    justify-content: space-between;
+  }
+  .item_sacola {
+    margin-top: 2%;
+    margin-left: -2.5%;
+    width: 60vw;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.854);
+    border-radius: 20px;
+    justify-content: space-between;
+    padding: 3%;
+  }
+  .apagar-botao {
+    width: 7vw;
+
+    padding: 1%;
+    font-size: 18px;
+    background-color: #4c2ffb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+  }
 }
