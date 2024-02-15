@@ -111,16 +111,17 @@ input {
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
       sans-serif;
      background-color: #f8d28b;
+     background-image: none;
     font-size: 20px;
   }
 
   .cabecalho {
     width: 100%;
-    font-size: 15px;
+    font-size: 10px;
     background-color: #3a7c2d;
     color: #fff9ff;
     display: flex;
-    height: 10vh;
+    height: 8vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,8 +138,8 @@ input {
     background-color: #6ed84e;
     border-radius: 20px;
     width: 60%;
-    height: 22vh;
-    margin-top: 2%;
+    height: 19vh;
+    margin-top: 20%;
     padding: 2%;
   }
   .input {
@@ -154,9 +155,19 @@ input {
     margin-bottom: 10px;
     width: 100%;
     box-sizing: border-box;
-    height: 5vh;
+    height: 3vh;
     padding: 1% 2%;
     font-size: 18px;
+  }
+  .botao-dicionar {
+    width: 16vw;
+    margin-top: 2%;
+    padding: 1%;
+    font-size: 20px;
+    background-color: #4c2ffb;
+    color: white;
+    border: none;
+    border-radius: 10px;
   }
   .form-item {
     display: flex;
@@ -170,16 +181,7 @@ input {
     max-width: 30%;
     max-height: 8%;
   }
-  .botao-dicionar {
-    width: 10vw;
-    margin-top: 2%;
-    padding: 1%;
-    font-size: 20px;
-    background-color: #4c2ffb;
-    color: white;
-    border: none;
-    border-radius: 10px;
-  }
+
   .resultado {
     width: 100%;
     vertical-align: baseline;
@@ -196,8 +198,7 @@ input {
     padding: 3%;
   }
   .apagar-botao {
-    width: 7vw;
-
+    width: 16vw;
     padding: 1%;
     font-size: 18px;
     background-color: #4c2ffb;
