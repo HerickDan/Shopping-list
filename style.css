@@ -4,7 +4,7 @@
 }
 body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  background-image: url("markettwo.jpg");
+  background-image: url("market.jpg");
   background-image: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -109,7 +109,7 @@ input {
       }
       body {
         font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-        background-image: url("markettwo.jpg");
+        background-image: url("market.jpg");
         background-image: 100%;
         background-repeat: no-repeat;
         background-size: cover;
