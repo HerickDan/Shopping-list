@@ -9,36 +9,26 @@ form.addEventListener('submit',function(e){
     function adicionarItem(){
         //Quantidade dos items adidiconados
         const quantidadeElemento = document.getElementById('quantidade');
-        let verifica = Number(quantidadeElemento.value);
-      
-        
+
         //Criação do parágrafo e sua classe
-        let p = document.createElement("p")
-        p.textContent=`${quantidadeElemento.value}  `
-        p.textContent+=item.value
-        p.className='item_sacola'
+        let article = document.createElement('article')
+        article.textContent=`${quantidadeElemento.value}  `
+        article.textContent+=item.value
+        article.className='item_sacola'
         
-        if (verifica > 1) {
-            quantidadeElemento.value=''
-            p.textContent += 's';
-        }else{
-            quantidadeElemento.value=''
-        }
+       
         //Criação do Botão e sua função
         const button = document.createElement('button')
-        button.className='Botao_apagar'
+        button.className='apagar-botao'
         button.textContent = 'Apagar'
         button.onclick = function(){
-            resultado.removeChild(p)
-        }
-        
-        
-        p.appendChild(button)
-        resultado.appendChild(p)       
-     
+            resultado.removeChild(article)
+        }     
+        article.appendChild(button)
+        resultado.appendChild(article)     
       
     }
     adicionarItem()
     item.value=''
-    
+ 
 })
