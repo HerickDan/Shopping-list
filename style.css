@@ -30,6 +30,7 @@ body {
 #formulario {
   display: flex;
   flex-direction: column;
+  margin-bottom: 2%;
   background-color: #6ed84e;
   border-radius: 20px;
   width: 30%;
@@ -102,7 +103,7 @@ input {
   border-radius: 10px;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 600px) {
   * {
     margin: 0;
     padding: 0;
