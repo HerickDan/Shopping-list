@@ -1,22 +1,32 @@
 import { styles } from "./style";
 
 interface Types {
-  titleState: boolean;
+  titleState: boolean,
+  cancelar: ()=>void,
 }
 
-export const ModalWidthForm = ({ titleState }: Types) => {
+export const ModalWidthForm = ({ titleState, cancelar }: Types) => {
   return (
-    <div>
-      {titleState === true ? (
+    <>
+     {titleState === true ? (
+    <div style={styles.generalDiv}>
+     
         <div style={styles.insideBox}>
-          <form>
+          <form >
             <input />
             <input />
             <input />
-            <button></button>
+            <button type="submit">
+              Submeter
+            </button>
+            <button onClick={cancelar}>
+              Cancelar
+            </button>
           </form>
         </div>
-      ) : null}
+     
     </div>
+     ) : null}
+    </>
   );
 };

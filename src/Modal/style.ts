@@ -1,9 +1,22 @@
-import shoppingImage from '../imgs/shopping.jpg'
 
-export const styles ={
+
+export const styles: { [key: string]: React.CSSProperties } ={
+    generalDiv:{ 
+        width:'100%',
+        height:'100%',
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        position:'fixed'
+    },
     insideBox:{
         backgroundColor:'white',
-        width:'200px',
-        height:'200px',
+        width:'400px',
+        height:'400px',
+    },
+    form:{
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:'space-between',
     }
 }

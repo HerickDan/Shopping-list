@@ -1,6 +1,6 @@
 import shoppingImage from '../imgs/shopping.jpg'
 
-export const styles ={
+export const styles: {[keys:string]: React.CSSProperties} ={
     backGround:{
         margin:'0',
         padding:'0',
@@ -8,8 +8,8 @@ export const styles ={
         backgroundSize:'cover',
         height:'100vh',
         display:'flex',
-        paddingLeft:'200px',
-        alignItems:'center'
+        alignItems:'center',
+        justifyContent:'center',
     },
     title:{
         color:'#F5F0F0',
@@ -28,6 +28,7 @@ export const styles ={
         height:'50px',
         fontSize:'18px',
         padding:'5px',
+        cursor:'pointer',
         borderRadius:'10px'    
     },
     viewListButton:{
