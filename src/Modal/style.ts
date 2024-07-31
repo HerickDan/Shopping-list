@@ -15,8 +15,8 @@ export const styles: { [key: string]: React.CSSProperties } ={
         height:'400px',
     },
     form:{
+        height:'100%',
         display:'flex',
         flexDirection:'column',
-        justifyContent:'space-between',
     }
 }

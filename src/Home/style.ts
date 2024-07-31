@@ -9,7 +9,9 @@ export const styles: {[keys:string]: React.CSSProperties} ={
         height:'100vh',
         display:'flex',
         alignItems:'center',
-        justifyContent:'center',
+    },
+    instrucionHome:{
+        marginLeft:'10%'
     },
     title:{
         color:'#F5F0F0',
