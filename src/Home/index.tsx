@@ -1,35 +1,40 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { styles } from "./style";
 import { ModalWidthForm } from "../Modal";
 
 export const Home = () => {
-  const [modalTitle, setModalTitle] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [nome, setNome] = useState("");
+  const [quantidade, setQuantidade] = useState("");
 
+  const [items, setItems] = useState<{ name: string; quantidade: string }[]>(
+    []
+  );
   const showOrHidden = () => {
-    modalTitle === false ? setModalTitle(true) : setModalTitle(false);
+    modal === false ? setModal(true) : setModal(false);
   };
-  
-  const [list, setList] = useState({ 
-    name: '', 
-    item: '', 
-    quantidade: '' });
-    
-    const [itemList, setItemList] = useState([{name:list.name}])
-    
-    const onSubmit = (e:any) =>{
-      e.preventDefault()
-      setItemList({name:list.name})
-      console.log(itemList)
-    }
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    setModal(false);
+    setItems([...items, { name: nome, quantidade: quantidade }]);
+    console.log(items);
+  };
   const cancelar = () => {
-    setModalTitle(false);
+    setModal(false);
   };
-  const handleChange = (e:any) =>{
-    const {name, value} = e.target
-    setList(prevList => ({ ...prevList, [name]: value }));
-  }
 
+  useEffect(() => {
+    console.log(items);
+  }, [items]);
 
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    if (name === "nome") {
+      setNome(value);
+    } else if (name === "quantidade") {
+      setQuantidade(value);
+    }
+  };
 
   return (
     <>
@@ -47,12 +52,13 @@ export const Home = () => {
           </div>
         </div>
 
-        <ModalWidthForm 
-        titleState={modalTitle} 
-        cancelar={cancelar} 
-        onSubmit={onSubmit}
-        name={list.name}
-        handleChange = {handleChange}
+        <ModalWidthForm
+          modal={modal}
+          nome={nome}
+          quantidade={quantidade}
+          handleChange={handleChange}
+          cancelar={cancelar}
+          onSubmit={onSubmit}
         />
       </div>
     </>
