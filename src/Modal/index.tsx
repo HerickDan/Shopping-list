@@ -1,28 +1,60 @@
-
 import { styles } from "./style";
 
 interface Types {
-  titleState: boolean;
+  modal: boolean;
   cancelar: () => void;
-  onSubmit: (e:any) =>void,
-  name?:string,
-  handleChange: (e:any) => void
+  onSubmit: (e: any) => void;
+  handleChange: (e: any) => void;
+  nome?: string;
+  quantidade?: string;
 }
 
-export const ModalWidthForm = ({ titleState, cancelar, onSubmit, name, handleChange }: Types) => {
- 
-  
+export const ModalWidthForm = ({
+  modal,
+  cancelar,
+  onSubmit,
+  nome,
+  quantidade,
+  handleChange,
+}: Types) => {
   return (
     <>
-      {titleState === true ? (
+      {modal === true ? (
         <div style={styles.generalDiv}>
           <div style={styles.insideBox}>
             <form style={styles.form} onSubmit={onSubmit}>
-              <input  value={name} onChange={handleChange} name="name"/>
-              <input />
-              <input />
-              <button type="submit">Submeter</button>
-              <button onClick={cancelar}>Cancelar</button>
+              <h1>Adicione um item</h1>
+              <div style={styles.formGroup}>
+                <label htmlFor="" style={styles.label}>
+                  Item:
+                </label>
+                <input
+                  value={nome}
+                  id="name"
+                  onChange={handleChange}
+                  name="nome"
+                  style={styles.input}
+                />
+              </div>
+              <div style={styles.formGroup}>
+                <label htmlFor="qunatidade" style={styles.label}>
+                  Quantidade:
+                </label>
+                <input
+                  value={quantidade}
+                  id="qunatidade"
+                  name="quantidade"
+                  onChange={handleChange}
+                  style={styles.input}
+                />
+              </div>
+
+              <button type="submit" style={styles.buttonSubmit}>
+                Adicionar
+              </button>
+              <button onClick={cancelar} style={styles.buttonCancel}>
+                Cancelar
+              </button>
             </form>
           </div>
         </div>
