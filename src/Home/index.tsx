@@ -11,14 +11,17 @@ export const Home = () => {
   const [items, setItems] = useState<{ name: string; quantidade: string }[]>(
     []
   );
+
   const showOrHidden = () => {
     modal === false ? setModal(true) : setModal(false);
   };
+
   const onSubmit = (e: any) => {
     e.preventDefault();
     setModal(false);
     setItems([...items, { name: nome, quantidade: quantidade }]);
   };
+
   const cancelar = () => {
     setModal(false);
   };
@@ -66,7 +69,10 @@ export const Home = () => {
             onSubmit={onSubmit}
           />
         </div>
-      ): <ListedItems/>}
+      ): 
+      <ListedItems
+        items={items}
+      />}
     </>
   );
 };

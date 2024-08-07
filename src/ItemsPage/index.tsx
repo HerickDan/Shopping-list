@@ -1,9 +1,19 @@
-import { styles } from "./style";
+    import { styles } from "./style";
 
-export const ListedItems = () =>{
-    return(
-        <div style={styles.backGround}>
-
-        </div>
-    )
-}
+   interface ListKeys{
+    name:string,
+    quantidade:string
+   }
+   interface Items{
+    items:ListKeys[]
+   }
+    export const ListedItems = ({items}:Items) =>{
+       
+        return(
+            <div style={styles.backGround}>
+                {items.map((item)=>(
+                    <h1>{item.name}</h1>
+                ))}
+            </div>
+        )
+    }
