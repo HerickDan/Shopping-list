@@ -34,6 +34,7 @@ export const styles: {[keys:string]: React.CSSProperties} ={
         borderRadius:'10px'    
     },
     viewListButton:{
+        cursor:'pointer',
         backgroundColor:'black',
         color:'#027fe9',
         border:'solid 2px #027fe9',
