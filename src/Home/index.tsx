@@ -6,9 +6,9 @@ import { ListedItems } from "../ItemsPage";
 export const Home = () => {
   const [modal, setModal] = useState(false);
   const [nome, setNome] = useState("");
-  const [quantidade, setQuantidade] = useState("");
+  const [quantidade, setQuantidade] = useState(0);
   const [homeState, setHomeState] = useState(true)
-  const [items, setItems] = useState<{ name: string; quantidade: string }[]>(
+  const [items, setItems] = useState<{ name: string; quantidade: number }[]>(
     []
   );
 
@@ -44,8 +44,9 @@ export const Home = () => {
 
   return (
     <>
-      {homeState === true ? (
+     
         <div style={styles.backGround}>
+        {homeState === true ? (
           <div style={styles.instrucionHome}>
             <h1 style={styles.title}>Lista de compras</h1>
             <h2 style={styles.subTitle}>
@@ -59,8 +60,7 @@ export const Home = () => {
                 Visualizar Item
               </button>
             </div>
-          </div>
-          <ModalWidthForm
+            <ModalWidthForm
             modal={modal}
             nome={nome}
             quantidade={quantidade}
@@ -68,11 +68,13 @@ export const Home = () => {
             cancelar={cancelar}
             onSubmit={onSubmit}
           />
-        </div>
-      ): 
+          </div>
+        ): 
       <ListedItems
         items={items}
       />}
+        </div>
+     
     </>
   );
 };

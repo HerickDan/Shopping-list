@@ -7,11 +7,13 @@ export const styles: {[keys:string]: React.CSSProperties} ={
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${shoppingImage}) `,
         backgroundSize:'cover',
         height:'100vh',
-        display:'flex',
-        alignItems:'center',
     },
     instrucionHome:{
-        marginLeft:'10%'
+        height:'100vh',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',
+        flexDirection:'column',
     },
     title:{
         color:'#F5F0F0',

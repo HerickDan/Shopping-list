@@ -6,7 +6,7 @@ interface Types {
   onSubmit: (e: any) => void;
   handleChange: (e: any) => void;
   nome?: string;
-  quantidade?: string;
+  quantidade?: number;
 }
 
 export const ModalWidthForm = ({
@@ -42,6 +42,7 @@ export const ModalWidthForm = ({
                 </label>
                 <input
                   value={quantidade}
+                  type="number"
                   id="qunatidade"
                   name="quantidade"
                   onChange={handleChange}

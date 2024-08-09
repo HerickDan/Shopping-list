@@ -2,7 +2,7 @@
 
    interface ListKeys{
     name:string,
-    quantidade:string
+    quantidade:number
    }
    interface Items{
     items:ListKeys[]
