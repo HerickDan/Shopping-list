@@ -13,14 +13,14 @@ export const ListedItems = ({ items, backToHome }: Items) => {
     <div style={styles.backGround}>
         <>
           <div style={styles.tableBox}>
-            <table style={styles.table}>
+            <table style={styles.table} >
               <th style={styles.th}>Item</th>
               <th style={styles.thQuantidae}>Quantidade</th>
               {items.map((item) => (   
-              <tr>
-                <td style={styles.td}>{item.name}</td>
+              <tr style={styles.tableRow}>
+                <td style={styles.td}>{item.name }</td>
                 <td style={styles.td}>{item.quantidade}</td>
-                <td style={styles.td}>Trash</td>
+                <td style={styles.trash}>Trash</td>
               </tr>
               ))}
             </table>

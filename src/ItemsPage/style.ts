@@ -15,7 +15,7 @@ export const styles: { [keys: string]: React.CSSProperties } = {
   tableBox: {
     width: "80%",
     height: "70%",
-    backgroundColor: "white",
+    backgroundColor: "#cff2ac",
     color: "black",
     display:'flex',
     justifyContent:'center',
@@ -23,18 +23,28 @@ export const styles: { [keys: string]: React.CSSProperties } = {
     borderRadius:'10px'
   },
   table: {
-    border: "solid 1px black",
     width:'90%',
-    height:'20%'
+    height:'20%',
+    borderCollapse: 'collapse'
   },
-  th: {
-    border: "solid 1px black",
+  th:{
+    width:'30%'
   },
   thQuantidae:{
-    width:'50%'
+    width:'30%',
   },
   td: {
     textAlign:'center',
-    border: "solid 1px black",
+    fontSize:'20px',
+    fontWeight:'600',
+    margin:0,
+    backgroundColor:'#51c83e'
   },
+  trash:{
+    textAlign:'center',
+    fontSize:'20px',
+    fontWeight:'600',
+    backgroundColor:'#51c83e',
+    width:'30%',
+  }
 };
