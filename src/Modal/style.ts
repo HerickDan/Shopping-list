@@ -11,7 +11,7 @@
     insideBox: {
       width: "400px",
       height: "500px",
-      backgroundColor: "#027fe9",
+      backgroundColor: "#005bc5",
       borderRadius: "10px",
     },
     form: {

@@ -29,9 +29,15 @@ export const Home = () => {
   const seeList = () => {
     if (items.length > 0) {
       setHomeState(false)
-      console.log("items:", items);
+    }
+    else{
+      window.alert('Nenhum item foi inserido na lista')
     }
   };
+
+  const backToHome = () =>{
+    setHomeState(true)
+  }
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -72,6 +78,7 @@ export const Home = () => {
         ): 
       <ListedItems
         items={items}
+        backToHome={backToHome}
       />}
         </div>
      
