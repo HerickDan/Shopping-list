@@ -20,6 +20,8 @@ export const Home = () => {
     e.preventDefault();
     setModal(false);
     setItems([...items, { name: nome, quantidade: quantidade }]);
+    setNome('')
+    setQuantidade(0)
   };
 
   const cancelar = () => {
@@ -34,9 +36,9 @@ export const Home = () => {
     }
   };
 
-  const backToHome = () => {
-    setHomeState(true);
-  };
+  //const backToHome = () => {
+  //setHomeState(true);
+  //};
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
