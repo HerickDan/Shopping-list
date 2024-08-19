@@ -1,34 +1,37 @@
 import { styles } from "./style";
-
 interface ListKeys {
   name: string;
   quantidade: number;
 }
+
 interface Items {
   items: ListKeys[];
-  backToHome: () =>void;
+  openModal: () => void;
 }
-export const ListedItems = ({ items, backToHome }: Items) => {
+
+export const ListedItems = ({ items, openModal }: Items) => {
   return (
-    <div style={styles.backGround}>
-        <>
-          <div style={styles.tableBox}>
-            <table style={styles.table} >
-              <th style={styles.th}>Item</th>
-              <th style={styles.thQuantidae}>Quantidade</th>
-              {items.map((item) => (   
-              <tr style={styles.tableRow}>
-                <td style={styles.td}>{item.name }</td>
-                <td style={styles.td}>{item.quantidade}</td>
-                <td style={styles.trash}>Trash</td>
+        <div style={styles.tableBox}>
+          <table style={styles.table}>
+            <thead>
+              <tr>
+                <th style={styles.th}>Item</th>
+                <th style={styles.thQuantidae}>Quantidade</th>
               </tr>
-              ))}
-            </table>
-          </div>
-          <button onClick={backToHome}>
-                Back to Home
-          </button>
-        </>
-    </div>
+            </thead>
+            <tbody>
+              {items.map((item, index) => {
+                const color = index % 2 !== 0 ? "yellow" : "green";
+                return (
+                  <tr key={index} style={{ backgroundColor: color }}>
+                    <td style={styles.td}>{item.name}</td>
+                    <td style={styles.td}>{item.quantidade}</td>
+                    <td style={styles.trash}>Trash</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
   );
 };

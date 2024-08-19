@@ -7,7 +7,7 @@ export const Home = () => {
   const [modal, setModal] = useState(false);
   const [nome, setNome] = useState("");
   const [quantidade, setQuantidade] = useState(0);
-  const [homeState, setHomeState] = useState(true)
+  const [homeState, setHomeState] = useState(true);
   const [items, setItems] = useState<{ name: string; quantidade: number }[]>(
     []
   );
@@ -28,16 +28,15 @@ export const Home = () => {
 
   const seeList = () => {
     if (items.length > 0) {
-      setHomeState(false)
-    }
-    else{
-      window.alert('Nenhum item foi inserido na lista')
+      setHomeState(false);
+    } else {
+      window.alert("Nenhum item foi inserido na lista");
     }
   };
 
-  const backToHome = () =>{
-    setHomeState(true)
-  }
+  const backToHome = () => {
+    setHomeState(true);
+  };
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -50,8 +49,7 @@ export const Home = () => {
 
   return (
     <>
-     
-        <div style={styles.backGround}>
+      <div style={styles.backGround}>
         {homeState === true ? (
           <div style={styles.instrucionHome}>
             <h1 style={styles.title}>Lista de compras</h1>
@@ -67,21 +65,24 @@ export const Home = () => {
               </button>
             </div>
             <ModalWidthForm
-            modal={modal}
-            nome={nome}
-            quantidade={quantidade}
-            handleChange={handleChange}
-            cancelar={cancelar}
-            onSubmit={onSubmit}
-          />
+              modal={modal}
+              nome={nome}
+              quantidade={quantidade}
+              handleChange={handleChange}
+              cancelar={cancelar}
+              onSubmit={onSubmit}
+            />
           </div>
-        ): 
-      <ListedItems
-        items={items}
-        backToHome={backToHome}
-      />}
-        </div>
-     
+        ) : (
+          <>
+           <div style={styles.list}>
+              <ListedItems items={items} openModal={showOrHidden} />
+              <button>Adicionar um novo item</button>
+           </div>
+          </>
+        )}
+        
+      </div>
     </>
   );
 };
