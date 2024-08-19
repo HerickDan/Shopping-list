@@ -28,7 +28,7 @@ export const styles: {[keys:string]: React.CSSProperties} ={
     addItemButton:{
         backgroundColor:'#027fe9',
         color:'black',
-        border:'none',
+        border:'solid 2px black',
         width:'135px',
         height:'50px',
         fontSize:'18px',
@@ -54,5 +54,17 @@ export const styles: {[keys:string]: React.CSSProperties} ={
         alignItems:'center',
         flexDirection:'column',
         width:'100%',
-    }
+    },
+    addMoreItemButton:{
+        backgroundColor:'#027fe9',
+        color:'black',
+        border:'solid 2px black',
+        marginTop: '2%',
+        width:'17%',
+        height:'10%',
+        fontSize:'20px',
+        padding:'8px',
+        cursor:'pointer',
+        borderRadius:'10px'    
+    },
 }

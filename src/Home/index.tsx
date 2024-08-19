@@ -77,7 +77,15 @@ export const Home = () => {
           <>
            <div style={styles.list}>
               <ListedItems items={items} openModal={showOrHidden} />
-              <button>Adicionar um novo item</button>
+              <button style={styles.addMoreItemButton} onClick={showOrHidden}>Adicionar um novo item</button>
+              <ModalWidthForm
+              modal={modal}
+              nome={nome}
+              quantidade={quantidade}
+              handleChange={handleChange}
+              cancelar={cancelar}
+              onSubmit={onSubmit}
+            />  
            </div>
           </>
         )}
