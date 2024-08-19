@@ -21,7 +21,7 @@ export const ListedItems = ({ items, openModal }: Items) => {
             </thead>
             <tbody>
               {items.map((item, index) => {
-                const color = index % 2 !== 0 ? "yellow" : "green";
+                const color = index % 2 !== 0 ? "#53b730" : "#88e763";
                 return (
                   <tr key={index} style={{ backgroundColor: color }}>
                     <td style={styles.td}>{item.name}</td>
