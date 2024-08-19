@@ -7,6 +7,7 @@ export const styles: {[keys:string]: React.CSSProperties} ={
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${shoppingImage}) `,
         backgroundSize:'cover',
         height:'100vh',
+        width:'100%',
     },
     instrucionHome:{
         height:'100vh',
@@ -46,5 +47,12 @@ export const styles: {[keys:string]: React.CSSProperties} ={
         padding:'5px',
         borderRadius:'10px',
         marginLeft:'20px'    
+    },
+    list:{
+        height:'100%',
+        display:'flex',
+        alignItems:'center',
+        flexDirection:'column',
+        width:'100%',
     }
 }
