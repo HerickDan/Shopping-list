@@ -8,20 +8,23 @@ export const Home = () => {
   const [nome, setNome] = useState("");
   const [quantidade, setQuantidade] = useState(0);
   const [homeState, setHomeState] = useState(true);
-  const [items, setItems] = useState<{ name: string; quantidade: number }[]>(
-    []
-  );
+  const [items, setItems] = useState<{ [key: string]: { name: string; quantidade: number } }>({});
+  const [lists, setLists] = useState<{ [key: string]: { name: string; quantidade: number } }[]>([]);
 
   const showOrHidden = () => {
-    modal === false ? setModal(true) : setModal(false);
+    setModal(!modal);
   };
 
   const onSubmit = (e: any) => {
     e.preventDefault();
+    const id = new Date().toISOString(); // Cria um ID único baseado no timestamp
     setModal(false);
-    setItems([...items, { name: nome, quantidade: quantidade }]);
-    setNome('')
-    setQuantidade(0)
+    setItems({
+      ...items,
+      [id]: { name: nome, quantidade: quantidade },
+    });
+    setNome('');
+    setQuantidade(0);
   };
 
   const cancelar = () => {
@@ -29,30 +32,32 @@ export const Home = () => {
   };
 
   const seeList = () => {
-    if (items.length > 0) {
+    if (Object.keys(items).length > 0) {
       setHomeState(false);
     } else {
       window.alert("Nenhum item foi inserido na lista");
     }
   };
 
-  //const backToHome = () => {
-  //setHomeState(true);
-  //};
+  const saveList = () => {
+    setLists([...lists, items]);
+    setHomeState(true);
+    setItems({});
+  };
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     if (name === "nome") {
       setNome(value);
     } else if (name === "quantidade") {
-      setQuantidade(value);
+      setQuantidade(Number(value)); // Garanta que a quantidade seja um número
     }
   };
 
   return (
     <>
       <div style={styles.backGround}>
-        {homeState === true ? (
+        {homeState ? (
           <div style={styles.instrucionHome}>
             <h1 style={styles.title}>Lista de compras</h1>
             <h2 style={styles.subTitle}>
@@ -78,20 +83,35 @@ export const Home = () => {
         ) : (
           <>
            <div style={styles.list}>
-              <ListedItems items={items} openModal={showOrHidden} />
+              <ListedItems items={Object.values(items)} saveList={saveList} />
               <button style={styles.addMoreItemButton} onClick={showOrHidden}>Adicionar um novo item</button>
               <ModalWidthForm
-              modal={modal}
-              nome={nome}
-              quantidade={quantidade}
-              handleChange={handleChange}
-              cancelar={cancelar}
-              onSubmit={onSubmit}
-            />  
+                modal={modal}
+                nome={nome}
+                quantidade={quantidade}
+                handleChange={handleChange}
+                cancelar={cancelar}
+                onSubmit={onSubmit}
+              />
            </div>
           </>
         )}
-        
+        {lists.length > 0 && (
+          <div>
+            <h2>Listas Salvas:</h2>
+            {lists.map((list, listIndex) => (
+              <div key={listIndex}>
+                <h3>Lista {listIndex + 1}</h3>
+                {Object.entries(list).map(([id, item]) => (
+                  <div key={id}>
+                    <h4>{item.name}</h4>
+                    <p>Quantidade: {item.quantidade}</p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

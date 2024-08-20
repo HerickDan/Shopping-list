@@ -6,10 +6,10 @@ interface ListKeys {
 
 interface Items {
   items: ListKeys[];
-  openModal: () => void;
+  saveList: ()=>void
 }
 
-export const ListedItems = ({ items, openModal }: Items) => {
+export const ListedItems = ({ items, saveList }: Items) => {
   return (
         <div style={styles.tableBox}>
           <table style={styles.table}>
@@ -31,6 +31,7 @@ export const ListedItems = ({ items, openModal }: Items) => {
                 );
               })}
             </tbody>
+            <button onClick={saveList}>Teste</button>
           </table>
         </div>
   );
