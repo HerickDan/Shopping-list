@@ -6,10 +6,10 @@ interface ListKeys {
 
 interface Items {
   items: ListKeys[];
-  saveList: ()=>void
+  trash: (itemName:string)=>void
 }
 
-export const ListedItems = ({ items, saveList }: Items) => {
+export const ListedItems = ({ items, trash }: Items) => {
   return (
         <div style={styles.tableBox}>
           <table style={styles.table}>
@@ -26,12 +26,15 @@ export const ListedItems = ({ items, saveList }: Items) => {
                   <tr key={index} style={{ backgroundColor: color }}>
                     <td style={styles.td}>{item.name}</td>
                     <td style={styles.td}>{item.quantidade}</td>
-                    <td style={styles.trash}>Trash</td>
+                    <td style={styles.trash}>
+                      <button onClick={()=>trash(item.name)}>
+                        Delete
+                      </button>
+                      </td>
                   </tr>
                 );
               })}
             </tbody>
-            <button onClick={saveList}>Teste</button>
           </table>
         </div>
   );

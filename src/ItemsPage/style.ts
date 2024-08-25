@@ -21,14 +21,12 @@ export const styles: { [keys: string]: React.CSSProperties } = {
   th: {
     width: "30%",
   },
-  thQuantidae: {
-    width: "30%",
-  },
   td: {
     textAlign: "center",
     fontSize: "20px",
     fontWeight: "600",
     margin: 0,
+    transition:'0.2ms'
   },
   trash: {
     textAlign: "center",
