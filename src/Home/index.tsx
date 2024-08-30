@@ -8,43 +8,39 @@ export const Home = () => {
   const [nome, setNome] = useState("")
   const [quantidade, setQuantidade] = useState(0)
   const [homeState, setHomeState] = useState(true)
-  const [items, setItems] = useState<{ name: string, quantidade: number }[]>(
-    []
-  )
+  const [items, setItems] = useState<{ name: string, quantidade: number }[]>([])
+
+ 
 
   const showOrHidden = () => {
     setModal(!modal)
   }
 
   const onSubmit = (e: any) => {
-  const newItems = [...items, { name: nome, quantidade: quantidade }]
-  localStorage.setItem("items", JSON.stringify(newItems))
-  setItems(newItems)
-  setModal(false)
-  setNome("")
-  setQuantidade(0)
+    const newItems = [...items, { name: nome, quantidade: quantidade }]
+    localStorage.setItem("items", JSON.stringify(newItems))
+    setItems(newItems)
+    setModal(false)
+    setNome("")
+    setQuantidade(0)
   }
 
   const cancelar = () => {
     setModal(false)
   }
 
-  let savedItems = JSON.parse(localStorage.getItem("items") || "[]")
-  
   const seeList = () => {
-    if(savedItems.length>0){
+    if(items.length > 0){
       setHomeState(false)
-    }
-    else{
+    } else {
       alert('Nenhum item foi inserido')
       setHomeState(true)
     }
   }
 
   const trash = (itemName: string) => {
-    const updatedItems = savedItems.filter((item: { name: string }) => item.name !== itemName)
+    const updatedItems = items.filter((item: { name: string }) => item.name !== itemName)
     localStorage.setItem("items", JSON.stringify(updatedItems))
-    JSON.parse(localStorage.getItem("items") || "[]")
     setItems(updatedItems)
     if (updatedItems.length === 0) {
       setHomeState(true)
@@ -60,7 +56,15 @@ export const Home = () => {
     }
   }
 
- 
+  useEffect(() => {
+    const savedItems = JSON.parse(localStorage.getItem("items") || "[]")
+    setItems(savedItems)
+    if (savedItems.length > 0) {
+      setHomeState(false)
+    } else {
+      setHomeState(true)
+    }
+  }, [])
 
   return (
     <>
@@ -91,7 +95,7 @@ export const Home = () => {
         ) : (
           <>
             <div style={styles.list}>
-              <ListedItems items={Object.values(items)} trash={trash} />
+              <ListedItems items={items} trash={trash} />
               <button style={styles.addMoreItemButton} onClick={showOrHidden}>
                 Adicionar um novo item
               </button>
