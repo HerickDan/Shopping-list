@@ -17,12 +17,12 @@ export const Home = () => {
   }
 
   const onSubmit = (e: any) => {
-    let newItems = [...items, { name: nome, quantidade: quantidade }]
-    window.localStorage.setItem("items", JSON.stringify(newItems))
-    e.preventDefault()
-    setModal(false)
-    setNome("")
-    setQuantidade(0)
+  const newItems = [...items, { name: nome, quantidade: quantidade }]
+  localStorage.setItem("items", JSON.stringify(newItems))
+  setItems(newItems)
+  setModal(false)
+  setNome("")
+  setQuantidade(0)
   }
 
   const cancelar = () => {
@@ -30,16 +30,21 @@ export const Home = () => {
   }
 
   let savedItems = JSON.parse(localStorage.getItem("items") || "[]")
+  
   const seeList = () => {
-    console.log(savedItems)
-    console.log()
-    setHomeState(false)
+    if(savedItems.length>0){
+      setHomeState(false)
+    }
+    else{
+      alert('Nenhum item foi inserido')
+      setHomeState(true)
+    }
   }
 
   const trash = (itemName: string) => {
-    let itemIndex = items.findIndex((item) => item.name === itemName)
-    const updatedItems = [...items]
-    updatedItems.splice(itemIndex, 1)
+    const updatedItems = savedItems.filter((item: { name: string }) => item.name !== itemName)
+    localStorage.setItem("items", JSON.stringify(updatedItems))
+    JSON.parse(localStorage.getItem("items") || "[]")
     setItems(updatedItems)
     if (updatedItems.length === 0) {
       setHomeState(true)
@@ -54,6 +59,8 @@ export const Home = () => {
       setQuantidade(Number(value))
     }
   }
+
+ 
 
   return (
     <>
@@ -84,7 +91,7 @@ export const Home = () => {
         ) : (
           <>
             <div style={styles.list}>
-              <ListedItems items={Object.values(savedItems)} trash={trash} />
+              <ListedItems items={Object.values(items)} trash={trash} />
               <button style={styles.addMoreItemButton} onClick={showOrHidden}>
                 Adicionar um novo item
               </button>
