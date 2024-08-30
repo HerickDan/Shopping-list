@@ -1,9 +1,12 @@
+import { table } from "console";
+
 export const styles: { [keys: string]: React.CSSProperties } = {
  
-  tableBox: {
+  listBox: {
     marginTop:'2%',
     width: "80%",
     height: "70%",
+    overflowY:'auto',
     backgroundColor: "#cff2ac",
     color: "black",
     display: "flex",
@@ -14,7 +17,7 @@ export const styles: { [keys: string]: React.CSSProperties } = {
   },
   table: {
     width: "90%",
-    height: "20%",
+    height: "15vh",
     borderCollapse: "collapse",
     marginBottom:'0px'
   },
@@ -30,8 +33,11 @@ export const styles: { [keys: string]: React.CSSProperties } = {
   },
   trash: {
     textAlign: "center",
-    fontSize: "20px",
-    fontWeight: "600",
     width: "30%",
   },
+  trashButton:{
+    background:'none',
+    cursor:'pointer',
+    border:'none',
+  }
 };

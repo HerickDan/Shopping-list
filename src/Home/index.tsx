@@ -1,60 +1,59 @@
-import { useState } from "react";
-import { styles } from "./style";
-import { ModalWidthForm } from "../Modal";
-import { ListedItems } from "../ItemsPage";
+import { useEffect, useState } from "react"
+import { styles } from "./style"
+import { ModalWidthForm } from "../Modal"
+import { ListedItems } from "../ItemsPage"
 
 export const Home = () => {
-  const [modal, setModal] = useState(false);
-  const [nome, setNome] = useState("");
-  const [quantidade, setQuantidade] = useState(0);
-  const [homeState, setHomeState] = useState(true);
-  const [items, setItems] = useState<{ name: string; quantidade: number }[]>([])
+  const [modal, setModal] = useState(false)
+  const [nome, setNome] = useState("")
+  const [quantidade, setQuantidade] = useState(0)
+  const [homeState, setHomeState] = useState(true)
+  const [items, setItems] = useState<{ name: string, quantidade: number }[]>(
+    []
+  )
 
   const showOrHidden = () => {
-    setModal(!modal);
-  };
+    setModal(!modal)
+  }
 
   const onSubmit = (e: any) => {
-    e.preventDefault();
-    setModal(false);
-    setItems([
-      ...items,
-      { name: nome, quantidade: quantidade }
-    ]);
-    setNome('');
-    setQuantidade(0);
-  };
+    let newItems = [...items, { name: nome, quantidade: quantidade }]
+    window.localStorage.setItem("items", JSON.stringify(newItems))
+    e.preventDefault()
+    setModal(false)
+    setNome("")
+    setQuantidade(0)
+  }
 
   const cancelar = () => {
-    setModal(false);
-  };
+    setModal(false)
+  }
 
+  let savedItems = JSON.parse(localStorage.getItem("items") || "[]")
   const seeList = () => {
-    if (Object.keys(items).length > 0) {
-      setHomeState(false);
-    } else {
-      window.alert("Nenhum item foi inserido na lista");
-    }
-  };
-   
-  const trash = (itemName: string) =>{
-    let itemIndex = items.findIndex((item)=>item.name===itemName)
-    const updatedItems = [...items]; 
-    updatedItems.splice(itemIndex, 1);
+    console.log(savedItems)
+    console.log()
+    setHomeState(false)
+  }
+
+  const trash = (itemName: string) => {
+    let itemIndex = items.findIndex((item) => item.name === itemName)
+    const updatedItems = [...items]
+    updatedItems.splice(itemIndex, 1)
     setItems(updatedItems)
-    if(updatedItems.length===0){
+    if (updatedItems.length === 0) {
       setHomeState(true)
     }
   }
 
   const handleChange = (e: any) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     if (name === "nome") {
-      setNome(value);
+      setNome(value)
     } else if (name === "quantidade") {
-      setQuantidade(Number(value)); 
+      setQuantidade(Number(value))
     }
-  };
+  }
 
   return (
     <>
@@ -84,9 +83,11 @@ export const Home = () => {
           </div>
         ) : (
           <>
-           <div style={styles.list}>
-              <ListedItems items={Object.values(items)} trash={trash}/>
-              <button style={styles.addMoreItemButton} onClick={showOrHidden}>Adicionar um novo item</button>
+            <div style={styles.list}>
+              <ListedItems items={Object.values(savedItems)} trash={trash} />
+              <button style={styles.addMoreItemButton} onClick={showOrHidden}>
+                Adicionar um novo item
+              </button>
               <ModalWidthForm
                 modal={modal}
                 nome={nome}
@@ -95,10 +96,10 @@ export const Home = () => {
                 cancelar={cancelar}
                 onSubmit={onSubmit}
               />
-           </div>
+            </div>
           </>
         )}
       </div>
     </>
-  );
-};
+  )
+}
