@@ -9,8 +9,24 @@ export const Home = () => {
   const [quantidade, setQuantidade] = useState(0)
   const [homeState, setHomeState] = useState(true)
   const [items, setItems] = useState<{ name: string, quantidade: number }[]>([])
+  const [addButtonStyle, setAddButtonStyle] = useState(styles.addMoreItemButton)
+  const [clearButtonStyle, setClearButtonStyle] = useState(styles.addMoreItemButton)
 
- 
+  const changeStyleAddButton = () => {
+    setAddButtonStyle(styles.hoverButton)
+  }
+
+  const resetStyleAddButton = () => {
+    setAddButtonStyle(styles.addMoreItemButton)
+  }
+
+  const changeStyleClearButton = () => {
+    setClearButtonStyle(styles.hoverButton)
+  }
+
+  const resetStyleClearButton = () => {
+    setClearButtonStyle(styles.addMoreItemButton)
+  }
 
   const showOrHidden = () => {
     setModal(!modal)
@@ -96,9 +112,24 @@ export const Home = () => {
           <>
             <div style={styles.list}>
               <ListedItems items={items} trash={trash} />
-              <button style={styles.addMoreItemButton} onClick={showOrHidden}>
-                Adicionar um novo item
-              </button>
+              <div style={styles.alignedButtons}>
+                <button
+                  style={addButtonStyle}
+                  onClick={showOrHidden}
+                  onMouseEnter={changeStyleAddButton}
+                  onMouseOut={resetStyleAddButton}
+                >
+                  Adicionar um novo item
+                </button>
+                <button
+                  style={clearButtonStyle}
+                  onClick={showOrHidden}
+                  onMouseEnter={changeStyleClearButton}
+                  onMouseOut={resetStyleClearButton}
+                >
+                  Limpar lista
+                </button>
+              </div>
               <ModalWidthForm
                 modal={modal}
                 nome={nome}

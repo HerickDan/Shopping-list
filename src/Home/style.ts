@@ -1,6 +1,6 @@
 import shoppingImage from '../imgs/shopping.jpg'
 
-export const styles: {[keys:string]: React.CSSProperties} ={
+export const styles: {[keys:string ]: React.CSSProperties} ={
     backGround:{
         margin:'0',
         padding:'0',
@@ -55,16 +55,36 @@ export const styles: {[keys:string]: React.CSSProperties} ={
         flexDirection:'column',
         width:'100%',
     },
+    alignedButtons:{
+        width:'80%',
+        padding:'0',
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
+    },
     addMoreItemButton:{
         backgroundColor:'#027fe9',
         color:'black',
         border:'solid 2px black',
         marginTop: '2%',
-        width:'17%',
-        height:'10%',
+        width:'25%',
         fontSize:'20px',
         padding:'8px',
         cursor:'pointer',
-        borderRadius:'10px'    
+        borderRadius:'10px',
+        transition:'0.2s'
     },
+    hoverButton:{
+        backgroundColor:'white',
+        color:'black',
+        border:'solid 2px black',
+        marginTop: '2%',
+        width:'25%',
+        fontSize:'20px',
+        padding:'8px',
+        cursor:'pointer',
+        borderRadius:'10px',
+         transition:'0.2s'
+    }
+
 }
