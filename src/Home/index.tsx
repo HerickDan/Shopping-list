@@ -64,7 +64,11 @@ export const Home = () => {
   }
 
   const clearAll = () =>{
-    localStorage.setItem('items', JSON.stringify(items.splice(0, items.length)))
+    while(items.length>0){
+      items.pop()
+    }
+    localStorage.setItem('items', JSON.stringify(items))
+    setItems(items.splice(0, items.length-1))
   }
 
   const handleChange = (e: any) => {
