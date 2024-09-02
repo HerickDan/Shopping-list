@@ -63,6 +63,10 @@ export const Home = () => {
     }
   }
 
+  const clearAll = () =>{
+    localStorage.setItem('items', JSON.stringify(items.splice(0, items.length)))
+  }
+
   const handleChange = (e: any) => {
     const { name, value } = e.target
     if (name === "nome") {
@@ -123,7 +127,7 @@ export const Home = () => {
                 </button>
                 <button
                   style={clearButtonStyle}
-                  onClick={showOrHidden}
+                  onClick={clearAll}
                   onMouseEnter={changeStyleClearButton}
                   onMouseOut={resetStyleClearButton}
                 >
