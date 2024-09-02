@@ -8,22 +8,27 @@ export const styles: {[keys:string ]: React.CSSProperties} ={
         backgroundSize:'cover',
         height:'100vh',
         width:'100%',
+        display:'flex',
+        flexDirection:'column'
     },
     instrucionHome:{
-        height:'100vh',
         display:'flex',
         alignItems:'center',
         justifyContent:'center',
         flexDirection:'column',
     },
     title:{
-        color:'#F5F0F0',
+        color:'#f3d683',
         fontSize:'70px', 
         fontFamily: 'Roboto',
+        fontWeight:'700',
+        marginBottom:'0'
     },
     subTitle:{
-        color:'#F5F0F0',
-        fontSize:'23px',  fontFamily: 'Roboto',
+        color:'#f3d683',
+        fontSize:'30px',  
+        fontWeight:'700',
+        fontFamily: 'Roboto',
     },
     addItemButton:{
         backgroundColor:'#027fe9',

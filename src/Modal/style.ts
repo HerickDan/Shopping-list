@@ -1,12 +1,12 @@
   export const styles: { [key: string]: React.CSSProperties } = {
     generalDiv: {
       width: "100%",
-      height: "100%",
+      height: "100vh",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      position: "fixed",
       backgroundColor: "rgba(0, 0, 0, 0.500)",
+      position:"fixed",
     },
     insideBox: {
       width: "400px",

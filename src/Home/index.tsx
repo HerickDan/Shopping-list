@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { styles } from "./style"
 import { ModalWidthForm } from "../Modal"
 import { ListedItems } from "../ItemsPage"
+import { Header } from "../Header"
 
 export const Home = () => {
   const [modal, setModal] = useState(false)
@@ -93,8 +94,10 @@ export const Home = () => {
   return (
     <>
       <div style={styles.backGround}>
+        <Header/>
         {homeState ? (
-          <div style={styles.instrucionHome}>
+        <>
+        <div style={styles.instrucionHome}>
             <h1 style={styles.title}>Lista de compras</h1>
             <h2 style={styles.subTitle}>
               Organize suas compras com facilidade e eficiência
@@ -107,15 +110,16 @@ export const Home = () => {
                 Visualizar Item
               </button>
             </div>
-            <ModalWidthForm
+          </div>
+        
+          <ModalWidthForm
               modal={modal}
               nome={nome}
               quantidade={quantidade}
               handleChange={handleChange}
               cancelar={cancelar}
-              onSubmit={onSubmit}
-            />
-          </div>
+              onSubmit={onSubmit} />
+          </>
         ) : (
           <>
             <div style={styles.list}>
