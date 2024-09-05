@@ -69,6 +69,7 @@ export const Home = () => {
       items.pop()
     }
     localStorage.setItem('items', JSON.stringify(items))
+    setHomeState(true)
     setItems(items.splice(0, items.length-1))
   }
 
@@ -94,7 +95,6 @@ export const Home = () => {
   return (
     <>
       <div style={styles.backGround}>
-        <Header/>
         {homeState ? (
         <>
         <div style={styles.instrucionHome}>

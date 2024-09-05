@@ -15,22 +15,13 @@ export const styles: { [keys: string]: React.CSSProperties } = {
     borderRadius: "10px",
     marginBottom:'0px'
   },
-  table: {
-    width: "90%",
-    height: "15vh",
-    borderCollapse: "collapse",
-    marginBottom:'0px'
-  },
-  th: {
-    width: "30%",
-  },
-  td: {
-    textAlign: "center",
-    fontSize: "20px",
-    fontWeight: "600",
-    margin: 0,
-    transition:'0.2ms'
-  },
+  item:{
+    display:'flex',
+    padding:'0px 40px',
+    justifyContent:'space-between',
+    height:'18%',
+    width:'80%'
+  },  
   trash: {
     textAlign: "center",
     width: "30%",
