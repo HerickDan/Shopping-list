@@ -10,7 +10,8 @@ export const styles: { [keys: string]: React.CSSProperties } = {
     backgroundColor: "#cff2ac",
     color: "black",
     display: "flex",
-    justifyContent: "center",
+    alignItems:'center',
+    flexDirection:'column',
     padding: "10px 0px",
     borderRadius: "10px",
     marginBottom:'0px'

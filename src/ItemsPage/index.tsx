@@ -8,20 +8,26 @@ interface ListKeys {
 interface Items {
   items?: ListKeys[];
   trash: (itemName: string) => void;
+  edit: boolean,
+  showModal:()=>void,
+  mode:string
 }
 
-export const ListedItems = ({ items, trash }: Items) => {
+
+
+export const ListedItems = ({ items, trash, edit, showModal, mode }: Items) => {
+
+  console.log(mode)
+
   return (
     <div style={styles.listBox}>
       {items?.map((item, index) => {
         const color = index % 2 !== 0 ? "#53b730" : "#88e763";
         return (
           <div style={{...styles.item, backgroundColor:color}}>
-            <h2>{item.name}</h2>
+            
+            <h2 onClick={showModal}>{item.name}</h2>
             <h2>{item.quantidade}</h2>
-
-              {/* status select */}
-
             <button onClick={() => trash(item.name)} style={styles.trashButton}>
               <img
                 src={trashIcon}

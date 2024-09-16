@@ -12,13 +12,17 @@ export const Home = () => {
   const [items, setItems] = useState<{ name: string; quantidade: number }[]>(
     []
   );
+  const [edit, setEdit] = useState(false)
+  const [mode, setMode] = useState('')
 
+
+  
   const showOrHidden = () => {
     setModal(!modal);
   };
-
+  
   const onSubmit = (e: any) => {
-    const newItems = [...items, { name: nome, quantidade: quantidade }];
+    const newItems = [...items,{ name: nome, quantidade: quantidade }];
     localStorage.setItem("items", JSON.stringify(newItems));
     setItems(newItems);
     setModal(false);
@@ -38,6 +42,8 @@ export const Home = () => {
       setHomeState(true);
     }
   };
+
+
 
   const trash = (itemName: string) => {
     const updatedItems = items.filter(
@@ -59,6 +65,7 @@ export const Home = () => {
     setItems(items.splice(0, items.length - 1));
   };
 
+
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     if (name === "nome") {
@@ -69,6 +76,7 @@ export const Home = () => {
   };
 
   useEffect(() => {
+    setItems([...items,{name:nome, quantidade:quantidade}])
     const savedItems = JSON.parse(localStorage.getItem("items") || "[]");
     setItems(savedItems);
     if (savedItems.length > 0) {
@@ -89,11 +97,10 @@ export const Home = () => {
                 Organize suas compras com facilidade e eficiência
               </h2>
               <div style={{ width: "40%", display: "flex" }}>
-                <Button onClick={showOrHidden}>Adicionar Item</Button>
+                <Button onClick={()=>{showOrHidden(); setMode('create')}}>Adicionar Item</Button>
                 <Button onClick={seeList}>Visualizar Item</Button>
               </div>
             </div>
-
             <ModalWidthForm
               modal={modal}
               nome={nome}
@@ -101,23 +108,31 @@ export const Home = () => {
               handleChange={handleChange}
               cancelar={cancelar}
               onSubmit={onSubmit}
+              mode={mode}
             />
           </>
         ) : (
           <>
             <div style={styles.list}>
-              <ListedItems items={items} trash={trash} />
+              <ListedItems 
+              items={items} 
+              trash={trash} 
+              edit={edit} 
+              showModal={()=>{showOrHidden(); setMode('edit')}} 
+              mode={mode}/>
               <div style={styles.alignedButtons}>
-                <Button onClick={showOrHidden}>Adicionar um novo item</Button>
+                <Button onClick={()=>{showOrHidden(); setMode('create')}}>Adicionar um novo item</Button>
                 <Button onClick={clearAll}>Limpar lista</Button>
               </div>
               <ModalWidthForm
+                mode={mode}         
                 modal={modal}
                 nome={nome}
                 quantidade={quantidade}
                 handleChange={handleChange}
                 cancelar={cancelar}
                 onSubmit={onSubmit}
+                item={items}
               />
             </div>
           </>
