@@ -9,7 +9,7 @@ export const Home = () => {
   const [nome, setNome] = useState("");
   const [quantidade, setQuantidade] = useState(0);
   const [homeState, setHomeState] = useState(true);
-  const [items, setItems] = useState<{ name: string; quantidade: number }[]>(
+  const [items, setItems] = useState<{ name: string; quantidade: number, id:number }[]>(
     []
   );
   const [edit, setEdit] = useState(false)
@@ -21,8 +21,9 @@ export const Home = () => {
     setModal(!modal);
   };
   
+  const randomNumber = Math.floor(Math.random()*50)
   const onSubmit = (e: any) => {
-    const newItems = [...items,{ name: nome, quantidade: quantidade }];
+    const newItems = [...items,{ name: nome, quantidade: quantidade, id:Math.floor(Math.random()*50) }];
     localStorage.setItem("items", JSON.stringify(newItems));
     setItems(newItems);
     setModal(false);
@@ -75,8 +76,12 @@ export const Home = () => {
     }
   };
 
+  const findObject = () =>{
+    
+  }
+
   useEffect(() => {
-    setItems([...items,{name:nome, quantidade:quantidade}])
+    setItems([...items,{name: nome, quantidade: quantidade, id:randomNumber}])
     const savedItems = JSON.parse(localStorage.getItem("items") || "[]");
     setItems(savedItems);
     if (savedItems.length > 0) {

@@ -3,6 +3,7 @@ import trashIcon from "../icons/icons8-lixeira-50.png";
 interface ListKeys {
   name: string;
   quantidade: number;
+  id:number
 }
 
 interface Items {
@@ -16,19 +17,19 @@ interface Items {
 
 
 export const ListedItems = ({ items, trash, edit, showModal, mode }: Items) => {
-
-  console.log(mode)
-
+  const findObject = (name:string) =>{
+    const findName = items?.filter((item)=>item.name === name)
+    console.log(findName)
+  }
   return (
     <div style={styles.listBox}>
       {items?.map((item, index) => {
         const color = index % 2 !== 0 ? "#53b730" : "#88e763";
         return (
-          <div style={{...styles.item, backgroundColor:color}}>
-            
-            <h2 onClick={showModal}>{item.name}</h2>
+          <div style={{...styles.item, backgroundColor:color}} key={item.id}>
+            <h2 onClick={()=>{showModal(); findObject(item.name) }}>{item.name}</h2>
             <h2>{item.quantidade}</h2>
-            <button onClick={() => trash(item.name)} style={styles.trashButton}>
+            <button onClick={() => {trash(item.name)}} style={styles.trashButton}>
               <img
                 src={trashIcon}
                 alt="Trash Icon"
