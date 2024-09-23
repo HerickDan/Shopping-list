@@ -11,16 +11,14 @@ interface Items {
   trash: (itemName: string) => void;
   edit: boolean,
   showModal:()=>void,
-  mode:string
+  mode:string,
+  findObject:(item:string)=>void 
 }
 
 
 
-export const ListedItems = ({ items, trash, edit, showModal, mode }: Items) => {
-  const findObject = (name:string) =>{
-    const findName = items?.filter((item)=>item.name === name)
-    console.log(findName)
-  }
+export const ListedItems = ({ items, trash, showModal, findObject }: Items) => {
+
   return (
     <div style={styles.listBox}>
       {items?.map((item, index) => {

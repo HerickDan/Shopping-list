@@ -14,8 +14,6 @@ export const Home = () => {
   );
   const [edit, setEdit] = useState(false)
   const [mode, setMode] = useState('')
-
-
   
   const showOrHidden = () => {
     setModal(!modal);
@@ -76,9 +74,9 @@ export const Home = () => {
     }
   };
 
-  const findObject = () =>{
-    
-  }
+  const findObject = (name: string) => {
+    return items.find(item => item.name === name) || null;
+  };
 
   useEffect(() => {
     setItems([...items,{name: nome, quantidade: quantidade, id:randomNumber}])
@@ -114,6 +112,7 @@ export const Home = () => {
               cancelar={cancelar}
               onSubmit={onSubmit}
               mode={mode}
+              findObject ={findObject}
             />
           </>
         ) : (
@@ -124,7 +123,8 @@ export const Home = () => {
               trash={trash} 
               edit={edit} 
               showModal={()=>{showOrHidden(); setMode('edit')}} 
-              mode={mode}/>
+              mode={mode}
+              findObject={findObject}/>
               <div style={styles.alignedButtons}>
                 <Button onClick={()=>{showOrHidden(); setMode('create')}}>Adicionar um novo item</Button>
                 <Button onClick={clearAll}>Limpar lista</Button>
@@ -138,6 +138,7 @@ export const Home = () => {
                 cancelar={cancelar}
                 onSubmit={onSubmit}
                 item={items}
+                findObject ={findObject}
               />
             </div>
           </>

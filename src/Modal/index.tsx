@@ -15,6 +15,7 @@ interface Types {
   quantidade?: number;
   mode?: string;
   item?: ListKeys[];
+  findObject?:string 
 }
 
 export const ModalWidthForm = ({
@@ -25,6 +26,7 @@ export const ModalWidthForm = ({
   quantidade,
   handleChange,
   mode,
+  findObject,
   item = [],
 }: Types) => {
   const title = mode == "create" ? "Adicione um item" : "Editar os dados";
@@ -70,15 +72,14 @@ export const ModalWidthForm = ({
                 </button>
               </form>
             ) : (
-              item.map((item, index) => (
-                <form style={styles.form} onSubmit={onSubmit} key={item.id}>
+                <form style={styles.form} onSubmit={onSubmit} >
                   <h1>{title}</h1>
                   <div style={styles.formGroup}>
                     <label htmlFor="" style={styles.label}>
                       Item:
                     </label>
                     <input
-                      value={item.name}
+                      value={findObject}
                       id="name"
                       onChange={handleChange}
                       name="nome"
@@ -90,7 +91,7 @@ export const ModalWidthForm = ({
                       Quantidade:
                     </label>
                     <input
-                      value={item.quantidade}
+                      value={0}
                       type="number"
                       id="qunatidade"
                       name="quantidade"
@@ -105,7 +106,6 @@ export const ModalWidthForm = ({
                     Cancelar
                   </button>
                 </form>
-              ))
             )}
           </div>
         </div>
