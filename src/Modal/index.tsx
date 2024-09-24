@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { styles } from "./style";
 
 interface ListKeys {
@@ -11,11 +12,12 @@ interface Types {
   cancelar: () => void;
   onSubmit: (e: any) => void;
   handleChange: (e: any) => void;
-  nome?: string;
-  quantidade?: number;
+  nome: string;
+  onSubmitEdit:(e:any,quantidade:number,  nome: string, )=>void;
+  quantidade: number;
   mode?: string;
   item?: ListKeys[];
-  findObject?:string 
+  findObject?:string;
 }
 
 export const ModalWidthForm = ({
@@ -27,10 +29,12 @@ export const ModalWidthForm = ({
   handleChange,
   mode,
   findObject,
+  onSubmitEdit,
   item = [],
 }: Types) => {
+  const[nomeEdit, setNomeEdit] = useState('')
+  const[quantidadeEdit, setQuantidadeEdit] = useState('')
   const title = mode == "create" ? "Adicione um item" : "Editar os dados";
-  const local = JSON.stringify(localStorage.getItem("items"));
   return (
     <>
       {modal === true ? (
@@ -72,7 +76,7 @@ export const ModalWidthForm = ({
                 </button>
               </form>
             ) : (
-                <form style={styles.form} onSubmit={onSubmit} >
+                <form style={styles.form} onSubmit={((e)=>onSubmitEdit(e, quantidade, nome))} >
                   <h1>{title}</h1>
                   <div style={styles.formGroup}>
                     <label htmlFor="" style={styles.label}>

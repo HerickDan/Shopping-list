@@ -14,7 +14,7 @@ export const Home = () => {
   );
   const [edit, setEdit] = useState(false)
   const [mode, setMode] = useState('')
-  
+  const [specificItem, setSpecificItem] = useState('')
   const showOrHidden = () => {
     setModal(!modal);
   };
@@ -42,8 +42,6 @@ export const Home = () => {
     }
   };
 
-
-
   const trash = (itemName: string) => {
     const updatedItems = items.filter(
       (item: { name: string }) => item.name !== itemName
@@ -69,14 +67,28 @@ export const Home = () => {
     const { name, value } = e.target;
     if (name === "nome") {
       setNome(value);
+      setSpecificItem(value)
     } else if (name === "quantidade") {
       setQuantidade(Number(value));
     }
   };
 
-  const findObject = (name: string) => {
-    return items.find(item => item.name === name) || null;
+  const findObject = (name: string,) => {
+    const foundItem = items?.find(item => item.name === name); 
+    if(foundItem){
+      setSpecificItem(foundItem.name)
+    }
   };
+
+  const itemSubstitute = (e:any, quantidade:number, nome:string, ) =>{
+    setItems([...items,{
+      name: nome,
+      quantidade: 0,
+      id: 0
+    }])
+    e.preventDefault()
+      console.log(nome)
+  }
 
   useEffect(() => {
     setItems([...items,{name: nome, quantidade: quantidade, id:randomNumber}])
@@ -111,8 +123,9 @@ export const Home = () => {
               handleChange={handleChange}
               cancelar={cancelar}
               onSubmit={onSubmit}
+              onSubmitEdit ={itemSubstitute}
               mode={mode}
-              findObject ={findObject}
+              findObject ={specificItem}
             />
           </>
         ) : (
@@ -137,8 +150,9 @@ export const Home = () => {
                 handleChange={handleChange}
                 cancelar={cancelar}
                 onSubmit={onSubmit}
+                onSubmitEdit ={itemSubstitute}
                 item={items}
-                findObject ={findObject}
+                findObject ={specificItem}
               />
             </div>
           </>
