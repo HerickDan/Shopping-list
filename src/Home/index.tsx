@@ -9,19 +9,17 @@ export const Home = () => {
   const [nome, setNome] = useState("");
   const [quantidade, setQuantidade] = useState(0);
   const [homeState, setHomeState] = useState(true);
-  const [items, setItems] = useState<{ name: string; quantidade: number, id:number }[]>(
-    []
-  );
-  const [edit, setEdit] = useState(false)
-  const [mode, setMode] = useState('')
-  const [specificItem, setSpecificItem] = useState('')
+  const [items, setItems] = useState<{ name: string; quantidade: number; id: number }[]>([]);
+  const [mode, setMode] = useState("create");
+  const [specificItemId, setSpecificItemId] = useState<number | null>(null)
+
   const showOrHidden = () => {
     setModal(!modal);
   };
-  
-  const randomNumber = Math.floor(Math.random()*50)
+
   const onSubmit = (e: any) => {
-    const newItems = [...items,{ name: nome, quantidade: quantidade, id:Math.floor(Math.random()*50) }];
+    e.preventDefault();
+    const newItems = [...items, { name: nome, quantidade: quantidade, id: Math.floor(Math.random() * 50) }];
     localStorage.setItem("items", JSON.stringify(newItems));
     setItems(newItems);
     setModal(false);
@@ -31,6 +29,8 @@ export const Home = () => {
 
   const cancelar = () => {
     setModal(false);
+    setNome("");
+    setQuantidade(0);
   };
 
   const seeList = () => {
@@ -42,10 +42,8 @@ export const Home = () => {
     }
   };
 
-  const trash = (itemName: string) => {
-    const updatedItems = items.filter(
-      (item: { name: string }) => item.name !== itemName
-    );
+  const trash = (itemId: number) => {
+    const updatedItems = items.filter((item) => item.id !== itemId);
     localStorage.setItem("items", JSON.stringify(updatedItems));
     setItems(updatedItems);
     if (updatedItems.length === 0) {
@@ -54,44 +52,43 @@ export const Home = () => {
   };
 
   const clearAll = () => {
-    while (items.length > 0) {
-      items.pop();
-    }
-    localStorage.setItem("items", JSON.stringify(items));
+    localStorage.removeItem("items");
+    setItems([]);
     setHomeState(true);
-    setItems(items.splice(0, items.length - 1));
   };
-
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     if (name === "nome") {
       setNome(value);
-      setSpecificItem(value)
     } else if (name === "quantidade") {
       setQuantidade(Number(value));
     }
   };
 
-  const findObject = (name: string,) => {
-    const foundItem = items?.find(item => item.name === name); 
-    if(foundItem){
-      setSpecificItem(foundItem.name)
+  const editItem = (itemId: number) => {
+    const itemToEdit = items.find((item) => item.id === itemId);
+    if (itemToEdit) {
+      setNome(itemToEdit.name);
+      setQuantidade(itemToEdit.quantidade);
+      setSpecificItemId(itemId)
+      setMode("edit");
+      setModal(true);
     }
   };
 
-  const itemSubstitute = (e:any, quantidade:number, nome:string, ) =>{
-    setItems([...items,{
-      name: nome,
-      quantidade: 0,
-      id: 0
-    }])
-    e.preventDefault()
-      console.log(nome)
-  }
+  const itemSubstitute = (e: any) => {
+    e.preventDefault();
+    const updatedItems = items.map((item) =>
+      item.id === specificItemId ? { ...item, name: nome, quantidade: quantidade } : item
+    );
+    setItems(updatedItems);
+    localStorage.setItem("items", JSON.stringify(updatedItems));
+    setModal(false);
+    setSpecificItemId(null)
+  };
 
   useEffect(() => {
-    setItems([...items,{name: nome, quantidade: quantidade, id:randomNumber}])
     const savedItems = JSON.parse(localStorage.getItem("items") || "[]");
     setItems(savedItems);
     if (savedItems.length > 0) {
@@ -108,11 +105,9 @@ export const Home = () => {
           <>
             <div style={styles.instrucionHome}>
               <h1 style={styles.title}>Lista de compras</h1>
-              <h2 style={styles.subTitle}>
-                Organize suas compras com facilidade e eficiência
-              </h2>
+              <h2 style={styles.subTitle}>Organize suas compras com facilidade e eficiência</h2>
               <div style={{ width: "40%", display: "flex" }}>
-                <Button onClick={()=>{showOrHidden(); setMode('create')}}>Adicionar Item</Button>
+                <Button onClick={() => { showOrHidden(); setMode('create'); }}>Adicionar Item</Button>
                 <Button onClick={seeList}>Visualizar Item</Button>
               </div>
             </div>
@@ -123,36 +118,34 @@ export const Home = () => {
               handleChange={handleChange}
               cancelar={cancelar}
               onSubmit={onSubmit}
-              onSubmitEdit ={itemSubstitute}
+              onSubmitEdit={itemSubstitute}
               mode={mode}
-              findObject ={specificItem}
             />
           </>
         ) : (
           <>
             <div style={styles.list}>
-              <ListedItems 
-              items={items} 
-              trash={trash} 
-              edit={edit} 
-              showModal={()=>{showOrHidden(); setMode('edit')}} 
-              mode={mode}
-              findObject={findObject}/>
+              <ListedItems
+                  items={items}
+                  trash={trash}
+                  editItem={editItem}
+                  showModal={() => { showOrHidden(); setMode('edit'); } }
+                  mode={mode} 
+                  edit={false}             
+                   />
               <div style={styles.alignedButtons}>
-                <Button onClick={()=>{showOrHidden(); setMode('create')}}>Adicionar um novo item</Button>
+                <Button onClick={() => { showOrHidden(); setMode('create'); }}>Adicionar um novo item</Button>
                 <Button onClick={clearAll}>Limpar lista</Button>
               </div>
               <ModalWidthForm
-                mode={mode}         
+                mode={mode}
                 modal={modal}
                 nome={nome}
                 quantidade={quantidade}
                 handleChange={handleChange}
                 cancelar={cancelar}
                 onSubmit={onSubmit}
-                onSubmitEdit ={itemSubstitute}
-                item={items}
-                findObject ={specificItem}
+                onSubmitEdit={itemSubstitute}
               />
             </div>
           </>

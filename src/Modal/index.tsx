@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { styles } from "./style";
+
 
 interface ListKeys {
   name: string;
@@ -32,8 +32,6 @@ export const ModalWidthForm = ({
   onSubmitEdit,
   item = [],
 }: Types) => {
-  const[nomeEdit, setNomeEdit] = useState('')
-  const[quantidadeEdit, setQuantidadeEdit] = useState('')
   const title = mode == "create" ? "Adicione um item" : "Editar os dados";
   return (
     <>
@@ -56,13 +54,13 @@ export const ModalWidthForm = ({
                   />
                 </div>
                 <div style={styles.formGroup}>
-                  <label htmlFor="qunatidade" style={styles.label}>
+                  <label htmlFor="quantidade" style={styles.label}>
                     Quantidade:
                   </label>
                   <input
                     value={quantidade}
                     type="number"
-                    id="qunatidade"
+                    id="quantidade"
                     name="quantidade"
                     onChange={handleChange}
                     style={styles.input}
@@ -76,40 +74,40 @@ export const ModalWidthForm = ({
                 </button>
               </form>
             ) : (
-                <form style={styles.form} onSubmit={((e)=>onSubmitEdit(e, quantidade, nome))} >
-                  <h1>{title}</h1>
-                  <div style={styles.formGroup}>
-                    <label htmlFor="" style={styles.label}>
-                      Item:
-                    </label>
-                    <input
-                      value={findObject}
-                      id="name"
-                      onChange={handleChange}
-                      name="nome"
-                      style={styles.input}
-                    />
-                  </div>
-                  <div style={styles.formGroup}>
-                    <label htmlFor="qunatidade" style={styles.label}>
-                      Quantidade:
-                    </label>
-                    <input
-                      value={0}
-                      type="number"
-                      id="qunatidade"
-                      name="quantidade"
-                      onChange={handleChange}
-                      style={styles.input}
-                    />
-                  </div>
-                  <button type="submit" style={styles.buttonSubmit}>
-                    Adicionar
-                  </button>
-                  <button onClick={cancelar} style={styles.buttonCancel}>
-                    Cancelar
-                  </button>
-                </form>
+              <form style={styles.form} onSubmit={(e) => onSubmitEdit(e, quantidade, nome)}>
+                <h1>{title}</h1>
+                <div style={styles.formGroup}>
+                  <label htmlFor="" style={styles.label}>
+                    Item:
+                  </label>
+                  <input
+                    value={nome}
+                    id="name"
+                    onChange={handleChange}
+                    name="nome"
+                    style={styles.input}
+                  />
+                </div>
+                <div style={styles.formGroup}>
+                  <label htmlFor="quantidade" style={styles.label}>
+                    Quantidade:
+                  </label>
+                  <input
+                    value={quantidade}
+                    type="number"
+                    id="quantidade"
+                    name="quantidade"
+                    onChange={handleChange}
+                    style={styles.input}
+                  />
+                </div>
+                <button type="submit" style={styles.buttonSubmit}>
+                  Salvar Alterações
+                </button>
+                <button onClick={cancelar} style={styles.buttonCancel}>
+                  Cancelar
+                </button>
+              </form>
             )}
           </div>
         </div>
