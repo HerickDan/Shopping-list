@@ -7,9 +7,9 @@ import { Button } from "../Button";
 export const Home = () => {
   const [modal, setModal] = useState(false);
   const [nome, setNome] = useState("");
-  const [quantidade, setQuantidade] = useState(0);
+  const [quantidade, setQuantidade] = useState<string | number>("")
   const [homeState, setHomeState] = useState(true);
-  const [items, setItems] = useState<{ name: string; quantidade: number; id: number }[]>([]);
+  const [items, setItems] = useState<{ name: string; quantidade: number | string; id: number }[]>([]);
   const [mode, setMode] = useState("create");
   const [specificItemId, setSpecificItemId] = useState<number | null>(null)
 
@@ -78,14 +78,13 @@ export const Home = () => {
   };
 
   const itemSubstitute = (e: any) => {
-    e.preventDefault();
-    const updatedItems = items.map((item) =>
-      item.id === specificItemId ? { ...item, name: nome, quantidade: quantidade } : item
+    e.preventDefault()
+    const updatedItems = items.map((item)=>
+      item.id === specificItemId ? {...item, name:nome, quantidade: quantidade} : item
     );
-    setItems(updatedItems);
-    localStorage.setItem("items", JSON.stringify(updatedItems));
-    setModal(false);
-    setSpecificItemId(null)
+    setItems(updatedItems)
+    localStorage.setItem('item', JSON.stringify(updatedItems));
+    setModal(false)
   };
 
   useEffect(() => {
