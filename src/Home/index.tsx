@@ -101,14 +101,16 @@ export const Home = () => {
   return (
     <>
       <div style={styles.backGround}>
+        <Header 
+          openModal={() => { showOrHidden(); setMode('create'); }}
+        />
         {homeState ? (
           <>
-           <Header/>
             <div style={styles.instrucionHome}>
               <h1 style={styles.title}>Lista de compras</h1>
               <h2 style={styles.subTitle}>Organize suas compras com facilidade e eficiência</h2>
               <div style={{ width: "40%", display: "flex" }}>
-                <Button onClick={() => { showOrHidden(); setMode('create'); }}>Adicionar Item</Button>
+                <Button onClick={() => { showOrHidden(); setMode('create')}}>Criar uma nova lista</Button>
                 <Button onClick={seeList}>Visualizar Item</Button>
               </div>
             </div>
