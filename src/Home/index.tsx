@@ -3,6 +3,7 @@ import { styles } from "./style";
 import { ModalWidthForm } from "../Modal";
 import { ListedItems } from "../ItemsPage";
 import { Button } from "../Button";
+import { Header } from "../Header";
 
 export const Home = () => {
   const [modal, setModal] = useState(false);
@@ -102,6 +103,7 @@ export const Home = () => {
       <div style={styles.backGround}>
         {homeState ? (
           <>
+           <Header/>
             <div style={styles.instrucionHome}>
               <h1 style={styles.title}>Lista de compras</h1>
               <h2 style={styles.subTitle}>Organize suas compras com facilidade e eficiência</h2>

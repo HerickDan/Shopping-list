@@ -4,7 +4,7 @@ export const styles: { [keys: string]: React.CSSProperties } = {
   backGround: {
     margin: "0",
     padding: "0",
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${shoppingImage}) `,
+    backgroundColor: `#045f9d `,
     backgroundSize: "cover",
     height: "100vh",
     width: "100%",
@@ -16,17 +16,19 @@ export const styles: { [keys: string]: React.CSSProperties } = {
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
+    width:'100%',
+    height:'100%'
   },
   title: {
     color: "#f3d683",
-    fontSize: "70px",
+    fontSize: "3em",
     fontFamily: "Roboto",
     fontWeight: "700",
     marginBottom: "0",
   },
   subTitle: {
     color: "#f3d683",
-    fontSize: "30px",
+    fontSize: "2em",
     fontWeight: "700",
     fontFamily: "Roboto",
   },

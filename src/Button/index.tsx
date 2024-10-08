@@ -6,8 +6,9 @@ const ButtonStyled = styled.button`
   color: black;
   border: solid 2px black;
   margin: 2%;
-  width: 50%;
-  font-size: 20px;
+  width: 100%;
+  font-size: 1.5em;
+  text-align: center;
   padding: 8px;
   cursor: pointer;
   border-radius: 10px;

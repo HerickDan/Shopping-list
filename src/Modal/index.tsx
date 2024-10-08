@@ -30,29 +30,14 @@ export const ModalWidthForm = ({
   mode,
   onSubmitEdit,
 }: Types) => {
-  const [fadeOut, setFadeOut] = useState(false)
-  const [isVisible, setIsVisible] = useState(modal)
   const title = mode === "create" ? "Adicione um item" : "Editar os dados"
 
-  const handleCancel = () => {
-    setFadeOut(true)
-    setTimeout(() => {
-      setIsVisible(false)
-      cancelar()
-    }, 150)
-  }
 
-  useEffect(() => {
-    if (modal) {
-      setFadeOut(false)
-      setIsVisible(true)
-    }
-  }, [modal])
 
   return (
     <>
-      {isVisible ? (
-        <div style={{ ...styles.generalDiv, animation: fadeOut ? 'fadeOut 0.200s forwards' : 'fadeIn 0.200s forwards' }}>
+      {modal ? (
+        <div style={styles.generalDiv}>
           <div style={styles.insideBox}>
             {mode === "create" ? (
               <form style={styles.form} onSubmit={onSubmit}>
@@ -79,7 +64,7 @@ export const ModalWidthForm = ({
                   />
                 </div>
                 <button type="submit" style={styles.buttonSubmit}>Adicionar</button>
-                <button type="button" onClick={handleCancel} style={styles.buttonCancel}>Cancelar</button>
+                <button type="button" onClick={cancelar} style={styles.buttonCancel}>Cancelar</button>
               </form>
             ) : (
               <form style={styles.form} onSubmit={(e) => onSubmitEdit(e)}>
@@ -106,7 +91,7 @@ export const ModalWidthForm = ({
                   />
                 </div>
                 <button type="submit" style={styles.buttonSubmit}>Salvar Alterações</button>
-                <button type="button" onClick={handleCancel} style={styles.buttonCancel}>Cancelar</button>
+                <button type="button" onClick={cancelar} style={styles.buttonCancel}>Cancelar</button>
               </form>
             )}
           </div>
