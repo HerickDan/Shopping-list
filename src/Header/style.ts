@@ -1,7 +1,6 @@
 export const styles: { [keys: string]: React.CSSProperties } = {
     headerComponent:{
         padding:'10px 20px',
-        backgroundColor:'#ffc52c',
         height:'8%',
         display:'flex',
         justifyContent:'space-between',
@@ -18,14 +17,33 @@ export const styles: { [keys: string]: React.CSSProperties } = {
     title:{
         marginTop:'3%',
         fontFamily:"Sixtyfour Convergence, sans-serif",
-        color:"#a50408"
+        color:"#15191d"
     },
-    crateListButton:{
+    divBotoes:{
+        display:'flex',
+        justifyContent:'space-between',
+        width:'23%'
+    },
+    botaoContato:{
         cursor:'pointer',
         border:'none',
         background:'none',
         display:'flex',
         alignItems:"center",
-        fontSize:'20px'
+        fontSize:'20px',
+        fontWeight:'600',
+        textDecoration:'underline'
+    },
+    crateListButton:{
+        padding:"10px",
+        cursor:'pointer',
+        border:'none',
+        color:'white',
+        borderRadius:'60px',
+        background:'black',
+        display:'flex',
+        alignItems:"center",
+        fontSize:'20px',
+        fontWeight:'600',
     }
 };

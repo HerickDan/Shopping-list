@@ -1,24 +1,26 @@
-import { styles } from "./style"
-import img from "../imgs/carrinho-de-compras.png"
-import addToList from "../imgs/icons8-adicionar-a-lista-32.png"
+import { styles } from "./style";
+import img from "../imgs/carrinho-de-compras.png";
+import addToList from "../imgs/cirar_lista.png";
 
-interface Props{
-    openModal : () => void
+interface Props {
+  openModal: () => void;
 }
 
-export const Header = ({openModal}: Props) =>{
-    return(
-       <div className="headerComponent" style={styles.headerComponent}>
-        <div style={styles.logoBox}>
-        <img src={img} style={styles.img}/>
+export const Header = ({ openModal }: Props) => {
+  return (
+    <div className="headerComponent" style={styles.headerComponent}>
+      <div style={styles.logoBox}>
+        <img src={img} style={styles.img} alt="carrinho de compras" />
         <h1 className="title" style={styles.title}>
-            Easy List
+          Easy List
         </h1>
-        </div>
-        <button style={styles.crateListButton} onClick={openModal}>
-            <img src={addToList}/>
-            Criar nova lista
+      </div>
+      <div style={styles.divBotoes}>
+        <button style={styles.botaoContato} >
+          Entre em contato
         </button>
-       </div>
-    )
-}
+        <button style={styles.crateListButton} onClick={openModal}>Criar lista</button>
+      </div>
+    </div>
+  );
+};

@@ -4,15 +4,19 @@ import { ModalWidthForm } from "../Modal";
 import { ListedItems } from "../ItemsPage";
 import { Button } from "../Button";
 import { Header } from "../Header";
+import imagemLista from "../imgs/lista-de-compras.jpg"
+
 
 export const Home = () => {
   const [modal, setModal] = useState(false);
   const [nome, setNome] = useState("");
-  const [quantidade, setQuantidade] = useState<string | number>("")
+  const [quantidade, setQuantidade] = useState<string | number>("");
   const [homeState, setHomeState] = useState(true);
-  const [items, setItems] = useState<{ name: string; quantidade: number | string; id: number }[]>([]);
+  const [items, setItems] = useState<
+    { name: string; quantidade: number | string; id: number }[]
+  >([]);
   const [mode, setMode] = useState("create");
-  const [specificItemId, setSpecificItemId] = useState<number | null>(null)
+  const [specificItemId, setSpecificItemId] = useState<number | null>(null);
 
   const showOrHidden = () => {
     setModal(!modal);
@@ -20,7 +24,14 @@ export const Home = () => {
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-    const newItems = [...items, { name: nome, quantidade: quantidade, id: Math.floor(Math.random() * 50) }];
+    const newItems = [
+      ...items,
+      {
+        name: nome,
+        quantidade: quantidade,
+        id: Math.floor(Math.random() * 50),
+      },
+    ];
     localStorage.setItem("items", JSON.stringify(newItems));
     setItems(newItems);
     setModal(false);
@@ -72,20 +83,22 @@ export const Home = () => {
     if (itemToEdit) {
       setNome(itemToEdit.name);
       setQuantidade(itemToEdit.quantidade);
-      setSpecificItemId(itemId)
+      setSpecificItemId(itemId);
       setMode("edit");
       setModal(true);
     }
   };
 
   const itemSubstitute = (e: any) => {
-    e.preventDefault()
-    const updatedItems = items.map((item)=>
-      item.id === specificItemId ? {...item, name:nome, quantidade: quantidade} : item
+    e.preventDefault();
+    const updatedItems = items.map((item) =>
+      item.id === specificItemId
+        ? { ...item, name: nome, quantidade: quantidade }
+        : item
     );
-    setItems(updatedItems)
-    localStorage.setItem('item', JSON.stringify(updatedItems));
-    setModal(false)
+    setItems(updatedItems);
+    localStorage.setItem("item", JSON.stringify(updatedItems));
+    setModal(false);
   };
 
   useEffect(() => {
@@ -101,17 +114,35 @@ export const Home = () => {
   return (
     <>
       <div style={styles.backGround}>
-        <Header 
-          openModal={() => { showOrHidden(); setMode('create'); }}
+        <Header
+          openModal={() => {
+            showOrHidden();
+            setMode("create");
+          }}
         />
         {homeState ? (
           <>
             <div style={styles.instrucionHome}>
-              <h1 style={styles.title}>Lista de compras</h1>
-              <h2 style={styles.subTitle}>Organize suas compras com facilidade e eficiência</h2>
-              <div style={{ width: "40%", display: "flex" }}>
-                <Button onClick={() => { showOrHidden(); setMode('create')}}>Criar uma nova lista</Button>
-                <Button onClick={seeList}>Visualizar Item</Button>
+              <div style={{width:"40%"}}>
+                <h1 style={styles.title}>Simplifique suas compras</h1>
+                <h2 style={styles.subTitle}>
+                  Experimente a praticidade da EasyList para listas de compras
+                  eficientes e sem o uso de papel e caneta.
+                </h2>
+                <div style={{display: "flex" }}>
+                  <Button
+                    onClick={() => {
+                      showOrHidden();
+                      setMode("create");
+                    }}
+                  >
+                    Criar uma nova lista
+                  </Button>
+                  <Button onClick={seeList}>Visualizar Item</Button>
+                </div>
+              </div>
+              <div style={{width:'40%', marginLeft:'2%'}}>
+                  <img src={imagemLista} alt="" width="85%" style={{borderRadius:'20px'}}/>
               </div>
             </div>
             <ModalWidthForm
@@ -129,15 +160,25 @@ export const Home = () => {
           <>
             <div style={styles.list}>
               <ListedItems
-                  items={items}
-                  trash={trash}
-                  editItem={editItem}
-                  showModal={() => { showOrHidden(); setMode('edit'); } }
-                  mode={mode} 
-                  edit={false}             
-                   />
+                items={items}
+                trash={trash}
+                editItem={editItem}
+                showModal={() => {
+                  showOrHidden();
+                  setMode("edit");
+                }}
+                mode={mode}
+                edit={false}
+              />
               <div style={styles.alignedButtons}>
-                <Button onClick={() => { showOrHidden(); setMode('create'); }}>Adicionar um novo item</Button>
+                <Button
+                  onClick={() => {
+                    showOrHidden();
+                    setMode("create");
+                  }}
+                >
+                  Adicionar um novo item
+                </Button>
                 <Button onClick={clearAll}>Limpar lista</Button>
               </div>
               <ModalWidthForm
