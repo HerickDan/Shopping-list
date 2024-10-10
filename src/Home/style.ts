@@ -13,6 +13,7 @@ export const styles: { [keys: string]: React.CSSProperties } = {
   instrucionHome: {
     display: "flex",
     alignItems: "center",
+    margin:"auto",
     justifyContent: "center",
   },
   title: {

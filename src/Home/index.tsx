@@ -4,8 +4,8 @@ import { ModalWidthForm } from "../Modal";
 import { ListedItems } from "../ItemsPage";
 import { Button } from "../Button";
 import { Header } from "../Header";
-import imagemLista from "../imgs/lista-de-compras.jpg"
-
+import imagemLista from "../imgs/lista-de-compras.jpg";
+import { Necessity } from "../Necessidade";
 
 export const Home = () => {
   const [modal, setModal] = useState(false);
@@ -46,10 +46,11 @@ export const Home = () => {
   };
 
   const seeList = () => {
+    debugger
     if (items.length > 0) {
       setHomeState(false);
     } else {
-      alert("Nenhum item foi inserido");
+      alert("Nenhuma lista foi criada ainda");
       setHomeState(true);
     }
   };
@@ -114,7 +115,7 @@ export const Home = () => {
   return (
     <>
       <div style={styles.backGround}>
-        <Header
+      <Header
           openModal={() => {
             showOrHidden();
             setMode("create");
@@ -123,26 +124,33 @@ export const Home = () => {
         {homeState ? (
           <>
             <div style={styles.instrucionHome}>
-              <div style={{width:"40%"}}>
+              <div style={{ width: "40%" }}>
                 <h1 style={styles.title}>Simplifique suas compras</h1>
                 <h2 style={styles.subTitle}>
                   Experimente a praticidade da EasyList para listas de compras
                   eficientes e sem o uso de papel e caneta.
                 </h2>
-                <div style={{display: "flex" }}>
+                <div style={{ display: "flex" }}>
                   <Button
+                    theme="dark"
                     onClick={() => {
                       showOrHidden();
                       setMode("create");
                     }}
                   >
-                    Criar uma nova lista
+                    Crie sua primeira lista
                   </Button>
-                  <Button onClick={seeList}>Visualizar Item</Button>
+                  <Button theme="light" onClick={seeList}>
+                    Visualizar lista já criada
+                  </Button>
                 </div>
               </div>
-              <div style={{width:'40%', marginLeft:'2%'}}>
-                  <img src={imagemLista} alt="" width="85%" style={{borderRadius:'20px'}}/>
+              <div style={{ width: "40%", marginLeft: "2%" }}>
+                <img
+                  src={imagemLista}
+                  alt=""
+                  style={{ borderRadius: "20px", height:'60vh', width:'80%' }}
+                />
               </div>
             </div>
             <ModalWidthForm
@@ -172,6 +180,7 @@ export const Home = () => {
               />
               <div style={styles.alignedButtons}>
                 <Button
+                  theme="light"
                   onClick={() => {
                     showOrHidden();
                     setMode("create");
@@ -179,7 +188,9 @@ export const Home = () => {
                 >
                   Adicionar um novo item
                 </Button>
-                <Button onClick={clearAll}>Limpar lista</Button>
+                <Button theme="light" onClick={clearAll}>
+                  Limpar lista
+                </Button>
               </div>
               <ModalWidthForm
                 mode={mode}
@@ -195,6 +206,7 @@ export const Home = () => {
           </>
         )}
       </div>
+        <Necessity/>
     </>
   );
 };
