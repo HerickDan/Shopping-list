@@ -6,7 +6,7 @@ export const styles: { [keys: string]: React.CSSProperties } = {
         margin:'auto',
         flexDirection:'column',
         justifyContent:'center',
-        alignItems:'center',
+        textAlign:'center',
         transition:'0.2s'
     },
     title:{

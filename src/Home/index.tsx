@@ -46,7 +46,6 @@ export const Home = () => {
   };
 
   const seeList = () => {
-    debugger
     if (items.length > 0) {
       setHomeState(false);
     } else {
