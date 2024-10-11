@@ -7,6 +7,7 @@ export const styles: { [keys: string]: React.CSSProperties } = {
     backgroundColor: "rgb(35, 156, 80)",
     backgroundSize: "cover",
     height: "100vh",
+    width:'100%',
     display: "flex",
     flexDirection: "column",
   },

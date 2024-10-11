@@ -1,6 +1,5 @@
 import { styles } from "./style";
 import img from "../imgs/carrinho-de-compras.png";
-import addToList from "../imgs/cirar_lista.png";
 
 interface Props {
   openModal: () => void;

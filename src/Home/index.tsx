@@ -116,11 +116,11 @@ export const Home = () => {
     <>
       <div style={styles.backGround}>
       <Header
-          openModal={() => {
+            openModal={() => {
             showOrHidden();
             setMode("create");
-          }}
-        />
+            }}
+            />
         {homeState ? (
           <>
             <div style={styles.instrucionHome}>

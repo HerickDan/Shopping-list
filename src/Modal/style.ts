@@ -6,8 +6,9 @@ export const styles: { [key: string]: React.CSSProperties } = {
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.500)",
-    position: "fixed",
-    animation: 'fadeIn 0.15s ease-in-out', // Adicionando a animação aqui
+    position: "absolute",
+    top: 0,
+    left: 0,
   },
   insideBox: {
     width: "400px",

@@ -4,7 +4,7 @@ export const styles: { [keys: string]: React.CSSProperties } = {
         height:'8%',
         display:'flex',
         justifyContent:'space-between',
-        alignItems:'center'
+        alignItems:'center',
     },
     logoBox:{
         display:'flex',
