@@ -6,6 +6,7 @@ import { Button } from "../Button";
 import { Header } from "../Header";
 import imagemLista from "../imgs/lista-de-compras.jpg";
 import { Necessity } from "../Necessidade";
+import { Reports } from "../Reports";
 
 export const Home = () => {
   const [modal, setModal] = useState(false);
@@ -205,7 +206,8 @@ export const Home = () => {
           </>
         )}
       </div>
-        <Necessity/>
+      <Necessity/>
+      <Reports/>
     </>
   );
 };
