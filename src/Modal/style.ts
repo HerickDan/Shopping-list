@@ -6,14 +6,14 @@ export const styles: { [key: string]: React.CSSProperties } = {
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.500)",
-    position: "absolute",
+    position: "fixed",
     top: 0,
     left: 0,
   },
   insideBox: {
     width: "400px",
     height: "500px",
-    backgroundColor: "#005bc5",
+    backgroundColor: "rgb(35, 156, 80)",
     borderRadius: "10px",
   },
   form: {
