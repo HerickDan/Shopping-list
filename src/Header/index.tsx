@@ -7,19 +7,19 @@ interface Props {
 
 export const Header = ({ openModal }: Props) => {
   return (
-    <div className="headerComponent" style={styles.headerComponent}>
+    <header className="headerComponent" style={styles.headerComponent}>
       <div style={styles.logoBox}>
         <img src={img} style={styles.img} alt="carrinho de compras" />
         <h1 className="title" style={styles.title}>
           Easy List
         </h1>
       </div>
-      <div style={styles.divBotoes}>
+      <nav style={styles.divBotoes}>
         <button style={styles.botaoContato} >
           Entre em contato
         </button>
         <button style={styles.crateListButton} onClick={openModal}>Criar lista</button>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };

@@ -115,16 +115,16 @@ export const Home = () => {
   return (
     <>
       <div style={styles.backGround}>
-      <Header
-            openModal={() => {
+        <Header
+          openModal={() => {
             showOrHidden();
             setMode("create");
-            }}
-            />
+          }}
+        />
         {homeState ? (
           <>
-            <div style={styles.instrucionHome}>
-              <div style={{ width: "40%" }}>
+            <section style={styles.instrucionHome}>
+              <article style={{ width: "40%" }}>
                 <h1 style={styles.title}>Simplifique suas compras</h1>
                 <h2 style={styles.subTitle}>
                   Experimente a praticidade da EasyList para listas de compras
@@ -144,15 +144,15 @@ export const Home = () => {
                     Visualizar lista já criada
                   </Button>
                 </div>
-              </div>
-              <div style={{ width: "40%", marginLeft: "2%" }}>
+              </article>
+              <aside style={{ width: "40%", marginLeft: "2%" }}>
                 <img
                   src={imagemLista}
-                  alt=""
-                  style={{ borderRadius: "20px", height:'60vh', width:'80%' }}
+                  alt="Imagem de lista de compras"
+                  style={{ borderRadius: "20px", height: "60vh", width: "80%" }}
                 />
-              </div>
-            </div>
+              </aside>
+            </section>
             <ModalWidthForm
               modal={modal}
               nome={nome}
@@ -166,7 +166,7 @@ export const Home = () => {
           </>
         ) : (
           <>
-            <div style={styles.list}>
+            <section style={styles.list}>
               <ListedItems
                 items={items}
                 trash={trash}
@@ -202,12 +202,12 @@ export const Home = () => {
                 onSubmit={onSubmit}
                 onSubmitEdit={itemSubstitute}
               />
-            </div>
+            </section>
           </>
         )}
       </div>
-      <Necessity/>
-      <Reports/>
+      <Necessity />
+      <Reports />
     </>
   );
 };
