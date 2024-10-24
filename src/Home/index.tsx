@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { styles } from "./style";
-import { ModalWidthForm } from "../Modal";
+import { Modal } from "../Modal";
 import { ListedItems } from "../ItemsPage";
-import { Button } from "../Button";
+import { Button } from "../components/Button";
 import { Header } from "../Header";
 import imagemLista from "../imgs/lista-de-compras.jpg";
 import { Necessity } from "../Necessidade";
 import { Reports } from "../Reports";
+import { Form } from "../components/Form";
+import { Input } from "../components/Input";
 
 export const Home = () => {
   const [modal, setModal] = useState(false);
@@ -98,7 +100,7 @@ export const Home = () => {
         : item
     );
     setItems(updatedItems);
-    localStorage.setItem("item", JSON.stringify(updatedItems));
+    localStorage.setItem("items", JSON.stringify(updatedItems));
     setModal(false);
   };
 
@@ -111,6 +113,8 @@ export const Home = () => {
       setHomeState(true);
     }
   }, []);
+
+  const modalTitle = mode === "create" ? "Adicione um item" : "Editar os dados";
 
   return (
     <>
@@ -153,16 +157,38 @@ export const Home = () => {
                 />
               </aside>
             </section>
-            <ModalWidthForm
+            <Modal
               modal={modal}
-              nome={nome}
-              quantidade={quantidade}
-              handleChange={handleChange}
-              cancelar={cancelar}
-              onSubmit={onSubmit}
-              onSubmitEdit={itemSubstitute}
-              mode={mode}
-            />
+            >
+              <Form style={styles.form} onSubmit={mode === "create" ? onSubmit : itemSubstitute}>
+                <h1>{modalTitle}</h1>
+                <div style={styles.formGroup}>
+                  <label htmlFor="" style={styles.label}>Item:</label>
+                  <Input
+                    value={nome}
+                    onChange={handleChange}
+                    name="nome"
+                    style={styles.input}
+                  />
+                </div>
+                <div style={styles.formGroup}>
+                  <label htmlFor="quantidade" style={styles.label}>Quantidade:</label>
+                  <Input
+                    value={quantidade}
+                    type="number"
+                    name="quantidade"
+                    onChange={handleChange}
+                    style={styles.input}
+                  />
+                </div>
+                <button type="submit" style={styles.buttonSubmit}>
+                  {mode === "create" ? "Adicionar" : "Salvar Alterações"}
+                </button>
+                <button type="button" onClick={cancelar} style={styles.buttonCancel}>
+                  Cancelar
+                </button>
+              </Form>
+            </Modal>
           </>
         ) : (
           <>
@@ -192,16 +218,11 @@ export const Home = () => {
                   Limpar lista
                 </Button>
               </div>
-              <ModalWidthForm
-                mode={mode}
-                modal={modal}
-                nome={nome}
-                quantidade={quantidade}
-                handleChange={handleChange}
-                cancelar={cancelar}
-                onSubmit={onSubmit}
-                onSubmitEdit={itemSubstitute}
-              />
+              <Modal
+              modal={modal}
+              >
+                <h1>Hell</h1>
+              </Modal>
             </section>
           </>
         )}

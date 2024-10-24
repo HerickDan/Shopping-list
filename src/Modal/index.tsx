@@ -1,3 +1,5 @@
+import { Form } from "../components/Form";
+import { Input } from "../components/Input";
 import { styles } from "./style"
 
 interface ListKeys {
@@ -8,94 +10,26 @@ interface ListKeys {
 
 interface Types {
   modal: boolean;
-  cancelar: () => void;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  nome: string;
-  onSubmitEdit: (e: React.FormEvent<HTMLFormElement>) => void;
-  quantidade: number | string;
-  mode?: string;
-  item?: ListKeys[];
-  findObject?: string;
+  children:JSX.Element |JSX.Element[];
 }
 
-export const ModalWidthForm = ({
+export const Modal = ({
   modal,
-  cancelar,
-  onSubmit,
-  nome,
-  quantidade,
-  handleChange,
-  mode,
-  onSubmitEdit,
+  //onSubmit,
+  //nome,
+  //quantidade,
+  //handleChange,s
+  children
+  //onSubmitEdit,
 }: Types) => {
-  const title = mode === "create" ? "Adicione um item" : "Editar os dados"
 
-
+  if (!modal) return null;
 
   return (
-    <>
-      {modal ? (
-        <div style={styles.generalDiv}>
-          <div style={styles.insideBox}>
-            {mode === "create" ? (
-              <form style={styles.form} onSubmit={onSubmit}>
-                <h1>{title}</h1>
-                <div style={styles.formGroup}>
-                  <label htmlFor="" style={styles.label}>Item:</label>
-                  <input
-                    value={nome}
-                    id="name"
-                    onChange={handleChange}
-                    name="nome"
-                    style={styles.input}
-                  />
-                </div>
-                <div style={styles.formGroup}>
-                  <label htmlFor="quantidade" style={styles.label}>Quantidade:</label>
-                  <input
-                    value={quantidade}
-                    type="number"
-                    id="quantidade"
-                    name="quantidade"
-                    onChange={handleChange}
-                    style={styles.input}
-                  />
-                </div>
-                <button type="submit" style={styles.buttonSubmit}>Adicionar</button>
-                <button type="button" onClick={cancelar} style={styles.buttonCancel}>Cancelar</button>
-              </form>
-            ) : (
-              <form style={styles.form} onSubmit={(e) => onSubmitEdit(e)}>
-                <h1>{title}</h1>
-                <div style={styles.formGroup}>
-                  <label htmlFor="" style={styles.label}>Item:</label>
-                  <input
-                    value={nome}
-                    id="name"
-                    onChange={handleChange}
-                    name="nome"
-                    style={styles.input}
-                  />
-                </div>
-                <div style={styles.formGroup}>
-                  <label htmlFor="quantidade" style={styles.label}>Quantidade:</label>
-                  <input
-                    value={quantidade}
-                    type="number"
-                    id="quantidade"
-                    name="quantidade"
-                    onChange={handleChange}
-                    style={styles.input}
-                  />
-                </div>
-                <button type="submit" style={styles.buttonSubmit}>Salvar Alterações</button>
-                <button type="button" onClick={cancelar} style={styles.buttonCancel}>Cancelar</button>
-              </form>
-            )}
-          </div>
-        </div>
-      ) : null}
-    </>
+    <div style={styles.generalDiv}>
+    <div style={styles.insideBox}>
+      {children}
+    </div>
+  </div>
   )
 }
