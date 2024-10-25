@@ -115,7 +115,7 @@ export const Home = () => {
   }, []);
 
   const modalTitle = mode === "create" ? "Adicione um item" : "Editar os dados";
-
+  console.log('mode', mode)
   return (
     <>
       <div style={styles.backGround}>
@@ -160,6 +160,8 @@ export const Home = () => {
             <Modal
               modal={modal}
             >
+             <>
+             { mode === 'create' ? ( 
               <Form style={styles.form} onSubmit={mode === "create" ? onSubmit : itemSubstitute}>
                 <h1>{modalTitle}</h1>
                 <div style={styles.formGroup}>
@@ -168,6 +170,7 @@ export const Home = () => {
                     value={nome}
                     onChange={handleChange}
                     name="nome"
+                    id="nome"
                     style={styles.input}
                   />
                 </div>
@@ -177,6 +180,7 @@ export const Home = () => {
                     value={quantidade}
                     type="number"
                     name="quantidade"
+                    id="quantidade"
                     onChange={handleChange}
                     style={styles.input}
                   />
@@ -187,7 +191,10 @@ export const Home = () => {
                 <button type="button" onClick={cancelar} style={styles.buttonCancel}>
                   Cancelar
                 </button>
-              </Form>
+             
+              </Form> 
+              ): null}
+              </>
             </Modal>
           </>
         ) : (
@@ -218,11 +225,39 @@ export const Home = () => {
                   Limpar lista
                 </Button>
               </div>
+              {mode !== 'create'?(
+
               <Modal
               modal={modal}
               >
-                <h1>Hell</h1>
+                 <form style={styles.form} onSubmit={(e) => itemSubstitute(e)}>
+                <h1>{modalTitle}</h1>
+                <div style={styles.formGroup}>
+                  <label htmlFor="" style={styles.label}>Item:</label>
+                  <input
+                    value={nome}
+                    id="name"
+                    onChange={handleChange}
+                    name="nome"
+                    style={styles.input}
+                  />
+                </div>
+                <div style={styles.formGroup}>
+                  <label htmlFor="quantidade" style={styles.label}>Quantidade:</label>
+                  <input
+                    value={quantidade}
+                    type="number"
+                    id="quantidade"
+                    name="quantidade"
+                    onChange={handleChange}
+                    style={styles.input}
+                  />
+                </div>
+                <button type="submit" style={styles.buttonSubmit}>Salvar Alterações</button>
+                <button type="button" onClick={cancelar} style={styles.buttonCancel}>Cancelar</button>
+              </form>
               </Modal>
+              ): null}
             </section>
           </>
         )}
