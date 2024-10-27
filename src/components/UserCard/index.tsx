@@ -1,7 +1,7 @@
 import { styles } from "./style";
-import christian from "../imgs/christian-levi.png";
-import justin from "../imgs/justinKale.png";
-import linda from "../imgs/linda-Lehua.png";
+import christian from "../../imgs/christian-levi.png";
+import justin from "../../imgs/justinKale.png";
+import linda from "../../imgs/linda-Lehua.png";
 import { useState } from "react";
 
 export const UserCard = () => {

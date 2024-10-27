@@ -1,5 +1,5 @@
-import { Form } from "../components/Form";
-import { Input } from "../components/Input";
+import { Form } from "../Form";
+import { Input } from "../Input";
 import { styles } from "./style"
 
 interface ListKeys {

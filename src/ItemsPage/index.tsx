@@ -2,7 +2,7 @@ import { styles } from "./style";
 import trashIcon from "../icons/icons8-lixeira-50.png";
 interface ListKeys {
   name: string;
-  quantidade: number | string;
+  quantidade: number | undefined;
   id:number
 }
 

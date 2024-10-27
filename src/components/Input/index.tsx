@@ -6,7 +6,7 @@ interface Props {
     name?:string,
     placeholder?:string,
     style:CSSProperties,
-    value:string | number,
+    value:undefined | number | string,
     id:string
     onChange:(e: React.ChangeEvent<HTMLInputElement>) => void,
 }
