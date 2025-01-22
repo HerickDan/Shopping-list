@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { styles } from "./style";
 import { ModalWithForm } from "../components/ModalWithForm";
 import { ListedItems } from "../ItemsPage";
@@ -7,12 +7,11 @@ import { Header } from "../Header";
 import imagemLista from "../imgs/lista-de-compras.jpg";
 import { Necessity } from "../Necessidade";
 import { Reports } from "../Reports";
+import { UserContext } from "../context";
 
 export const Home = () => {
-  const [modal, setModal] = useState(false);
-  const [nome, setNome] = useState("");
-  const [quantidade, setQuantidade] = useState<number | undefined>(undefined); 
-  const [homeState, setHomeState] = useState(true);
+  const {modal, setModal, nome, setNome, quantidade, setQuantidade, homeState, setHomeState} = useContext(UserContext)
+
   const [items, setItems] = useState<
     { name: string; quantidade: number | undefined; id: number }[]
   >([]);
