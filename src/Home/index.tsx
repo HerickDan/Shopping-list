@@ -10,14 +10,21 @@ import { Reports } from "../Reports";
 import { UserContext } from "../context";
 
 export const Home = () => {
-  const {modal, setModal, nome, setNome, quantidade, setQuantidade, homeState, setHomeState} = useContext(UserContext)
-
-  const [items, setItems] = useState<
-    { name: string; quantidade: number | undefined; id: number }[]
-  >([]);
-  const [mode, setMode] = useState<"create" | "edit">("create"); 
-  const [specificItemId, setSpecificItemId] = useState<number | undefined>(undefined);
-
+  const {modal, 
+    setModal, 
+    nome, 
+    setNome, 
+    quantidade, 
+    setQuantidade, 
+    homeState, 
+    setHomeState, 
+    items, 
+    setItems,
+    specificItemId,
+    mode,
+    setMode,
+    setSpecificItemId} = useContext(UserContext)
+   
   const showOrHidden = () => {
     setModal(!modal);
   };

@@ -20,6 +20,7 @@ export const styles: { [keys: string]: React.CSSProperties } = {
     display:'flex',
     padding:'0px 40px',
     justifyContent:'space-between',
+    alignItems:'center',
     height:'18%',
     width:'80%'
   },  
